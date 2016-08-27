@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use File;
 use App\Models\DogAdmin\Utils;
 
+use App\User;
+
 class InstallDogAdmin extends Command
 {
     /**
@@ -42,6 +44,60 @@ class InstallDogAdmin extends Command
  		Utils::changeEnv('DB_PASSWORD', $data->general->DB->password);
 
  		/*=====  End of SETEO BD  ======*/
+
+ 		/*=============================
+ 		=            LOGIN            =
+ 		=============================*/
+
+		Utils::changeEnv('REDIRECT_ON_LOGIN', $data->general->redirect_on_login);
+		Utils::changeEnv('REDIRECT_AFTER_LOGOUT', $data->general->redirect_after_logout);
+
+		$user = User::where('email', 'demo@demo.com')->first();
+
+		// creo un usuario de prueba si es que no existe
+		if ($user == NULL)
+		{
+			User::create([
+				'name'     => 'Usuario de prueba',
+				'email'    => 'demo@demo.com',
+				'password' => 'demo123'
+	        ]);
+
+	        $this->comment('Usuario de prueba creado');
+	        $this->info('Email: demo@demo.com');
+	        $this->info('Password: demo123');
+		}
+
+ 		/*=====  End of LOGIN  ======*/
+
+ 		/*==============================
+ 		=            TABLES            =
+ 		==============================*/
+
+ 		foreach ($data->modules as $m)
+ 		{
+ 			\Artisan::call('make:migration', ['name' => 'create_'.$m->general->table.'_table', '--create' => $m->general->table]);
+ 		}
+
+ 		\Artisan::call('migrate');
+
+
+ 		/*=====  End of TABLES  ======*/
+
+
+ 		/*==============================
+ 		=            FIELDS            =
+ 		==============================*/
+
+ 		foreach ($data->modules as $m)
+ 		{
+ 			// \Artisan::call('make:migration', ['name' => 'create_'.$m->general->table.'_table', '--create' => $m->general->table]);
+ 		}
+
+ 		\Artisan::call('migrate');
+
+ 		/*=====  End of FIELDS  ======*/
+
 
 
     }

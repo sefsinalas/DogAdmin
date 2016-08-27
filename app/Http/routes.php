@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+// demo del admin
+Route::get('/demo', 'DemoController@index');
 
 
 Route::group(['middleware' => ['web']], function() {

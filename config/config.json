@@ -6,6 +6,114 @@
 			"username": "root",
 			"password": ""
 		},
+		"redirect_on_login": "/demo",
+		"redirect_after_logout": "/login",
 		"title": "BM Estudio"
-	}
+	},
+	"modules":[
+		{
+			"general":{
+				"name": "Inicio",
+				"table": "home"
+			},
+			"fields":[
+				{
+					"title": "Titulo 1",
+					"type": "varchar"
+				},
+				{
+					"title": "Titulo 1",
+					"type": "varchar"
+				},
+				{
+					"title": "Texto",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"general":{
+				"name": "Servicios",
+				"table": "servicios"
+			},
+			"fields":[
+				{
+					"title": "Imagen",
+					"type": "image"
+				},
+				{
+					"title": "Titulo",
+					"type": "varchar"
+				}
+			]
+		},
+		{
+			"general":{
+				"name": "portfolio",
+				"table": "portfolio"
+			},
+			"fields":[
+				{
+					"title": "Titulo corto",
+					"type": "varchar"
+				},
+				{
+					"title": "Imagen portada",
+					"type": "image"
+				},
+				{
+					"title": "Titulo completo",
+					"type": "varchar"
+				},
+				{
+					"title": "Texto",
+					"type": "text"
+				},
+				{
+					"title": "Galeria",
+					"type": "image"
+				}
+			]
+		},
+		{
+			"general":{
+				"name": "Contacto",
+				"table": "contacto"
+			},
+			"fields":[
+				{
+					"title": "Email",
+					"type": "varchar"
+				},
+				{
+					"title": "Dirección",
+					"type": "varchar"
+				},
+				{
+					"title": "Localidad",
+					"type": "varchar"
+				},
+				{
+					"title": "URL Facebook",
+					"type": "varchar"
+				},
+				{
+					"title": "URL Behance",
+					"type": "varchar"
+				},
+				{
+					"title": "URL Vimeo",
+					"type": "varchar"
+				},
+				{
+					"title": "URL Pinterest",
+					"type": "varchar"
+				},
+				{
+					"title": "URL LinkedIn",
+					"type": "varchar"
+				}
+			]
+		}
+	]
 }

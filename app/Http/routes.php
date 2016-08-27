@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+
+Route::group(['middleware' => ['web']], function() {
+    Route::get('/profile', 'ProfileController@view');
+    Route::post('/profile', 'ProfileController@update');
+    Route::get('/users', 'UsersController@index');
+});

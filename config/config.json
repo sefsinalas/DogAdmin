@@ -2,7 +2,7 @@
 	"general":{
 		"DB" : {
 			"host"    : "localhost",
-			"database": "DogADmin",
+			"database": "DogAdmin",
 			"username": "root",
 			"password": ""
 		},

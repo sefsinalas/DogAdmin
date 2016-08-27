@@ -1,0 +1,11 @@
+{
+	"general":{
+		"DB" : {
+			"host"    : "localhost",
+			"database": "DogADmin",
+			"username": "root",
+			"password": ""
+		},
+		"title": "BM Estudio"
+	}
+}

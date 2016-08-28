@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::auth();
 
 // demo del admin
@@ -25,4 +21,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/profile', 'ProfileController@view');
     Route::post('/profile', 'ProfileController@update');
     Route::get('/users', 'UsersController@index');
+
+    Route::get('/home', 'DogAdmin\HomeController@index');
 });
+

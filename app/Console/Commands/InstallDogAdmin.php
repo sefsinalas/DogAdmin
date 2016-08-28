@@ -49,6 +49,8 @@ class InstallDogAdmin extends Command
  		=            LOGIN            =
  		=============================*/
 
+ 		\Artisan::call('migrate');
+
 		Utils::changeEnv('REDIRECT_ON_LOGIN', $data->general->redirect_on_login);
 		Utils::changeEnv('REDIRECT_AFTER_LOGOUT', $data->general->redirect_after_logout);
 
@@ -60,7 +62,7 @@ class InstallDogAdmin extends Command
 			User::create([
 				'name'     => 'Usuario de prueba',
 				'email'    => 'demo@demo.com',
-				'password' => 'demo123'
+				'password' => bcrypt('demo123')
 	        ]);
 
 	        $this->comment('Usuario de prueba creado');
@@ -70,21 +72,6 @@ class InstallDogAdmin extends Command
 
  		/*=====  End of LOGIN  ======*/
 
- 		/*==============================
- 		=            TABLES            =
- 		==============================*/
-
- 		foreach ($data->modules as $m)
- 		{
- 			// creo la migracion que solo crea las tablas
- 			\Artisan::call('make:migration', ['name' => 'create_'.$m->general->table.'_table', '--create' => $m->general->table]);
- 		}
-
- 		\Artisan::call('migrate');
-
-
- 		/*=====  End of TABLES  ======*/
-
 
  		/*==============================
  		=            FIELDS            =
@@ -92,30 +79,42 @@ class InstallDogAdmin extends Command
 
  		foreach ($data->modules as $m)
  		{
- 			$fields = [];
+ 			$fieldsForMigration = [];
 
  			foreach ($m->fields as $f)
  			{
  				$name = (empty($f->name)) ? preg_replace('/[^\w-]/', '', strtolower($f->title)) : $f->name;
 
+ 				/*==============================
+ 				=            FIELDS            =
+ 				==============================*/
+
  				if ($f->type == 'string')
  				{
- 					$fields[] = $name.':string(255)';
+ 					$fieldsForMigration[] = $name.':string(255)';
  				}
  				elseif($f->type == 'text')
  				{
- 					$fields[] = $name.':text';
+ 					$fieldsForMigration[] = $name.':text';
  				}
+
+ 				/*=====  End of FIELDS  ======*/
+
  			}
 
- 			\Artisan::call('generate:migration', ['name' => 'add_fields_to_'.$m->general->table.'_table', '-t' => $m->general->table, '--fields' => implode(',', $fields)]);
+ 			// crea la tabla con sus respectivos campos
+ 			\Artisan::call('generate:migration', ['name' => 'create_'.$m->general->table.'_table', '-t' => $m->general->table, '--fields' => implode(',', $fieldsForMigration)]);
+
+ 			// crea los modelos con table, fillable y rules
+ 			\Artisan::call('generate:model', ['name' => $m->general->table, '--fields' => implode(',', $fieldsForMigration), '--fillable' => implode(',', $fieldsForMigration), '--table-name' => $m->general->table]);
+
+ 			// crea los controladores
+ 			\Artisan::call('generate:controller', ['name' => 'DogAdmin/'.$m->general->table.'_controller', '-s' => true]);
  		}
 
  		\Artisan::call('migrate');
 
  		/*=====  End of FIELDS  ======*/
-
-
 
     }
 }

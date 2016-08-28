@@ -19,11 +19,12 @@
 			"fields":[
 				{
 					"title": "Titulo 1",
-					"type": "varchar"
+					"type": "string",
+					"name": "titulo_principal"
 				},
 				{
-					"title": "Titulo 1",
-					"type": "varchar"
+					"title": "Titulo 2",
+					"type": "string"
 				},
 				{
 					"title": "Texto",
@@ -43,7 +44,7 @@
 				},
 				{
 					"title": "Titulo",
-					"type": "varchar"
+					"type": "string"
 				}
 			]
 		},
@@ -55,7 +56,7 @@
 			"fields":[
 				{
 					"title": "Titulo corto",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "Imagen portada",
@@ -63,7 +64,7 @@
 				},
 				{
 					"title": "Titulo completo",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "Texto",
@@ -83,35 +84,35 @@
 			"fields":[
 				{
 					"title": "Email",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "Dirección",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "Localidad",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "URL Facebook",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "URL Behance",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "URL Vimeo",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "URL Pinterest",
-					"type": "varchar"
+					"type": "string"
 				},
 				{
 					"title": "URL LinkedIn",
-					"type": "varchar"
+					"type": "string"
 				}
 			]
 		}

@@ -76,6 +76,7 @@ class InstallDogAdmin extends Command
 
  		foreach ($data->modules as $m)
  		{
+ 			// creo la migracion que solo crea las tablas
  			\Artisan::call('make:migration', ['name' => 'create_'.$m->general->table.'_table', '--create' => $m->general->table]);
  		}
 
@@ -91,7 +92,23 @@ class InstallDogAdmin extends Command
 
  		foreach ($data->modules as $m)
  		{
- 			// \Artisan::call('make:migration', ['name' => 'create_'.$m->general->table.'_table', '--create' => $m->general->table]);
+ 			$fields = [];
+
+ 			foreach ($m->fields as $f)
+ 			{
+ 				$name = (empty($f->name)) ? preg_replace('/[^\w-]/', '', strtolower($f->title)) : $f->name;
+
+ 				if ($f->type == 'string')
+ 				{
+ 					$fields[] = $name.':string(255)';
+ 				}
+ 				elseif($f->type == 'text')
+ 				{
+ 					$fields[] = $name.':text';
+ 				}
+ 			}
+
+ 			\Artisan::call('generate:migration', ['name' => 'add_fields_to_'.$m->general->table.'_table', '-t' => $m->general->table, '--fields' => implode(',', $fields)]);
  		}
 
  		\Artisan::call('migrate');

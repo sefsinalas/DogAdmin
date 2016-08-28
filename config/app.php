@@ -160,6 +160,7 @@ return [
          * DogAdmin
          */
         Syahzul\AdminTheme\ServiceProvider::class,
+        Mayconbordin\Laragen\GeneratorServiceProvider::class
 
     ],
 

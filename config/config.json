@@ -2,10 +2,120 @@
 	"general":{
 		"DB" : {
 			"host"    : "localhost",
-			"database": "DogADmin",
+			"database": "DogAdmin",
 			"username": "root",
 			"password": ""
 		},
-		"title": "BM Estudio"
-	}
+		"redirect_on_login": "/demo",
+		"redirect_after_logout": "/login",
+		"title": "BM Estudio",
+		"mini_title": "BME"
+	},
+	"modules":[
+		{
+			"general":{
+				"name": "Inicio",
+				"table": "home"
+			},
+			"fields":[
+				{
+					"title": "Titulo 1",
+					"type": "string",
+					"name": "titulo_principal"
+				},
+				{
+					"title": "Titulo 2",
+					"type": "string"
+				},
+				{
+					"title": "Texto",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"general":{
+				"name": "Servicios",
+				"table": "servicios"
+			},
+			"fields":[
+				{
+					"title": "Imagen",
+					"type": "image"
+				},
+				{
+					"title": "Titulo",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"general":{
+				"name": "Portfolio",
+				"table": "portfolio"
+			},
+			"fields":[
+				{
+					"title": "Titulo corto",
+					"type": "string"
+				},
+				{
+					"title": "Imagen portada",
+					"type": "image"
+				},
+				{
+					"title": "Titulo completo",
+					"type": "string"
+				},
+				{
+					"title": "Texto",
+					"type": "text"
+				},
+				{
+					"title": "Galeria",
+					"type": "image"
+				}
+			]
+		},
+		{
+			"general":{
+				"name": "Contacto",
+				"table": "contacto"
+			},
+			"fields":[
+				{
+					"title": "Email",
+					"type": "string"
+				},
+				{
+					"title": "Dirección",
+					"type": "string"
+				},
+				{
+					"title": "Localidad",
+					"type": "string"
+				},
+				{
+					"title": "URL Facebook",
+					"type": "string"
+				},
+				{
+					"title": "URL Behance",
+					"type": "string"
+				},
+				{
+					"title": "URL Vimeo",
+					"type": "string"
+				},
+				{
+					"title": "URL Pinterest",
+					"type": "string"
+				},
+				{
+					"title": "URL LinkedIn",
+					"type": "string"
+				}
+			]
+		}
+	]
 }

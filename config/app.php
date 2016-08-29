@@ -156,6 +156,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * DogAdmin
+         */
+        Syahzul\AdminTheme\ServiceProvider::class,
+        Mayconbordin\Laragen\GeneratorServiceProvider::class
+
     ],
 
     /*

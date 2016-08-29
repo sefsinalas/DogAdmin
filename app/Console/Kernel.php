@@ -15,6 +15,9 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         // Commands\Inspire::class,
         Commands\InstallDogAdmin::class,
+        Commands\ResetDogAdmin::class,
+        Commands\CreateControllerDogAdmin::class,
+        Commands\CreateIndexViewDogAdmin::class,
     ];
 
     /**

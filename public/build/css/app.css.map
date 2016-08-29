@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.less","app.css"],"names":[],"mappings":"AAAA;;;EACC,iBAAA;CCGA","file":"app.css","sourcesContent":["body, label, .checkbox label {\n\tfont-weight: 300;\n}\n","body,\nlabel,\n.checkbox label {\n  font-weight: 300;\n}\n"],"sourceRoot":"/source/"}

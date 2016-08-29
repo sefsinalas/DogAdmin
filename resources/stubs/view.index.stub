@@ -1,0 +1,35 @@
+@extends('layouts.dogadmin')
+
+@section('page_title', '{{title}}')
+@section('page_heading', '{{title}}')
+
+@section('dogadmin-content')
+	<div class="table-responsive">
+		<table class="table no-margin">
+			<thead>
+				<tr>
+					{{column-titles}}
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					@foreach ($items as $item)
+					    {{columns}}
+					@endforeach
+				</tr>
+			</tbody>
+		</table>
+	</div>
+@endsection
+
+@section('vendor_styles')
+
+@endsection
+
+@section('vendor_scripts')
+
+@endsection
+
+@section('scripts')
+
+@endsection

@@ -33,10 +33,76 @@ class CreateIndexViewDogAdmin extends Command
     {
         $content = File::get("resources/stubs/view.index.stub");
 
-        $camel = Utils::camelize($this->argument('name'));
+        $json = File::get("config/config.json");
+        $data = json_decode($json);
 
-        $content = str_replace('{{title}}', $camel, $content);
+        /*==============================================================
+        =            BUSCO EL MODULO PARA OBTENER SUS DATOS            =
+        ==============================================================*/
+        foreach ($data->modules as $m)
+        {
+        	if ($m->general->table == $this->argument('name'))
+        	{
+        		$module = $m;
+        	}
+        }
 
+        $camel = Utils::camelize($module->general->table);
+        /*=====  End of BUSCO EL MODULO PARA OBTENER SUS DATOS  ======*/
+
+
+        /*==============================
+        =            TITTLE            =
+        ==============================*/
+        $content = str_replace('{{title}}', $module->general->name, $content);
+        /*=====  End of TITTLE  ======*/
+
+
+        /*====================================
+        =            COLUMN TITLES            =
+        ====================================*/
+        $columnTitles = '<th>ID</th>'	.PHP_EOL;
+
+        foreach ($module->fields as $f)
+        {
+        	if ($f->type == 'string')
+        	{
+        		$columnTitles .= '<th>'.$f->title.'</th>'.PHP_EOL;
+        	}
+        }
+
+        $columnTitles .= '<th>Acciones</th>'.PHP_EOL;
+
+        $content = str_replace('{{column-titles}}', $columnTitles, $content);
+        /*=====  End of COLUMN TITLES  ======*/
+
+
+        /*======================================
+        =            COLUMN CONTENT            =
+        ======================================*/
+        $columns = '<td>{{ $item->id }}</td>'.PHP_EOL;
+
+        foreach ($module->fields as $f)
+        {
+        	$name = (empty($f->name)) ? Utils::decamelize($f->title) : $f->name;
+
+        	if ($f->type == 'string')
+        	{
+        		$columns .= '<td>{{ $item->'.$name.' }}</td>'.PHP_EOL;
+        	}
+
+        }
+
+        $columns .= '<td></td>'.PHP_EOL;
+
+        $content = str_replace('{{columns}}', $columns, $content);
+        /*=====  End of COLUMN CONTENT  ======*/
+
+
+
+        /*=============================================
+        =            DIRECTORIO Y ARCHIVOS            =
+        =============================================*/
         if (!is_dir("resources/views/DogAdmin/"))
         {
 		  	mkdir("resources/views/DogAdmin");
@@ -48,5 +114,9 @@ class CreateIndexViewDogAdmin extends Command
 		}
 
         File::put("resources/views/DogAdmin/".$camel.'/index.blade.php', $content);
+        /*=====  End of DIRECTORIO Y ARCHIVOS  ======*/
+
+
+
     }
 }

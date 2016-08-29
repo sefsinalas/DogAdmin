@@ -28,7 +28,7 @@ class {{class}} extends Controller
 	 */
 	public function index()
 	{
-		return $this->view('DogAdmin.{{view}}.index')->with('items', {{model}}::all());
+		return view('DogAdmin.{{view}}.index',['items' => {{model}}::all()]);
 	}
 
 	/**
@@ -38,7 +38,7 @@ class {{class}} extends Controller
 	 */
 	public function create()
 	{
-		return $this->view('{{view}}.add_edit');
+		return view('{{view}}.add_edit');
 	}
 
 	/**
@@ -64,7 +64,7 @@ class {{class}} extends Controller
 	 */
 	public function show({{model}} ${{collection}})
 	{
-		return $this->view('{{view}}.show')->with('item', ${{collection}});
+		return view('{{view}}.show', ['item' => ${{collection}}]);
 	}
 
 	/**
@@ -75,7 +75,7 @@ class {{class}} extends Controller
      */
     public function edit({{model}} ${{collection}})
 	{
-		return $this->view('{{view}}.add_edit')->with('item', ${{collection}});
+		return view('{{view}}.add_edit', ['item' => ${{collection}}]);
 	}
 
 	/**

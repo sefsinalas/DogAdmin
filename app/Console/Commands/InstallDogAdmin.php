@@ -83,7 +83,7 @@ class InstallDogAdmin extends Command
 
  			foreach ($m->fields as $f)
  			{
- 				$name = (empty($f->name)) ? preg_replace('/[^\w-]/', '', strtolower($f->title)) : $f->name;
+ 				$name = (empty($f->name)) ? Utils::decamelize($f->title) : $f->name;
 
  				/*==============================
  				=            FIELDS            =

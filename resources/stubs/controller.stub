@@ -1,0 +1,110 @@
+<?php
+
+namespace App\Http\Controllers;
+
+{{models}}
+use Illuminate\Http\Requests;
+
+use Redirect;
+
+use Illuminate\Http\Request;
+
+class {{class}} extends Controller
+{
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+	/**
+	 * Display a listing of {{model}}.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		return $this->view('DogAdmin.{{view}}.index')->with('items', {{model}}::all());
+	}
+
+	/**
+	 * Show the form for creating a new {{model}}.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		return $this->view('{{view}}.add_edit');
+	}
+
+	/**
+	 * Store a newly created {{model}} in storage.
+	 *
+	 * @param Request $request
+	 * @return Response
+	 */
+	public function store(Request $request)
+	{
+		$this->validate($request, {{model}}::$rules, {{model}}::$messages);
+
+        $this->createEntry({{model}}::class, $request->all());
+
+        return Redirect::route('{{view}}.index');
+	}
+
+	/**
+	 * Display the specified {{model}}.
+	 *
+	 * @param {{model}} ${{collection}}
+	 * @return Response
+	 */
+	public function show({{model}} ${{collection}})
+	{
+		return $this->view('{{view}}.show')->with('item', ${{collection}});
+	}
+
+	/**
+	 * Show the form for editing the specified {{model}}.
+	 *
+	 * @param {{model}} ${{collection}}
+     * @return Response
+     */
+    public function edit({{model}} ${{collection}})
+	{
+		return $this->view('{{view}}.add_edit')->with('item', ${{collection}});
+	}
+
+	/**
+	 * Update the specified {{model}} in storage.
+	 *
+	 * @param {{model}}  ${{collection}}
+     * @param Request    $request
+     * @return Response
+     */
+    public function update({{model}} ${{collection}}, Request $request)
+	{
+		$this->validate($request, {{model}}::$rules, {{model}}::$messages);
+
+        $this->updateEntry(${{collection}}, $request->all());
+
+        return Redirect::route('{{view}}.index');
+	}
+
+	/**
+	 * Remove the specified {{model}} from storage.
+	 *
+	 * @param {{model}}  ${{collection}}
+     * @param Request    $request
+	 * @return Response
+	 */
+	public function destroy({{model}} ${{collection}}, Request $request)
+	{
+		$this->deleteEntry(${{collection}}, $request);
+
+        return Redirect::route('{{view}}.index');
+	}
+}

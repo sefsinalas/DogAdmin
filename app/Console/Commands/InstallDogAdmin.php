@@ -103,13 +103,16 @@ class InstallDogAdmin extends Command
  			}
 
  			// crea la tabla con sus respectivos campos
- 			\Artisan::call('generate:migration', ['name' => 'create_'.$m->general->table.'_table', '-t' => $m->general->table, '--fields' => implode(',', $fieldsForMigration)]);
+ 			\Artisan::call('generate:migration', ['name' => 'create_'.$m->general->table.'_table', '--fields' => implode(',', $fieldsForMigration)]);
 
  			// crea los modelos con table, fillable y rules
  			\Artisan::call('generate:model', ['name' => $m->general->table, '--fields' => implode(',', $fieldsForMigration), '--fillable' => implode(',', $fieldsForMigration), '--table-name' => $m->general->table]);
 
  			// crea los controladores
- 			\Artisan::call('generate:controller', ['name' => 'DogAdmin/'.$m->general->table.'_controller', '-s' => true]);
+ 			\Artisan::call('dogadmin:create_controller', ['name' => $m->general->table]);
+
+ 			// crea las vistas
+ 			\Artisan::call('dogadmin:create_index_view', ['name' => $m->general->table]);
  		}
 
  		\Artisan::call('migrate');

@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
         // Commands\Inspire::class,
         Commands\InstallDogAdmin::class,
         Commands\ResetDogAdmin::class,
+        Commands\CreateControllerDogAdmin::class,
+        Commands\CreateIndexViewDogAdmin::class,
     ];
 
     /**

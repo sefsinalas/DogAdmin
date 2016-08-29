@@ -17,4 +17,16 @@ class Utils{
 		    file_get_contents(base_path().'/.env')
 		));
 	}
+
+
+	public static function decamelize($camel)
+	{
+		return strtolower(preg_replace(['/([a-z\d])([A-Z])/', '/([^_])([A-Z][a-z])/'], '$1_$2', $camel));
+	}
+
+
+	public static function camelize($uncamel)
+	{
+		return str_replace(' ', '', ucwords(str_replace('-', ' ', $uncamel)));
+	}
 }

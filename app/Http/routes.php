@@ -22,6 +22,6 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/profile', 'ProfileController@update');
     Route::get('/users', 'UsersController@index');
 
-    Route::get('/home', 'DogAdmin\HomeController@index');
+    Route::get('/home', 'HomeController@index');
 });
 

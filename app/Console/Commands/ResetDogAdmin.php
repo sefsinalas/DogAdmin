@@ -78,9 +78,16 @@ class ResetDogAdmin extends Command
  			{
  				File::delete($file[0]);
  			}
- 		}
 
- 		// \Artisan::call('migrate');
+ 			// borra los controllers
+ 			$file = File::glob('resources/views/DogAdmin/'.Utils::camelize($m->general->table));
+
+ 			if (!empty($file))
+ 			{
+ 				File::delete($file[0].'/index.blade.php');
+ 				rmdir($file[0]);
+ 			}
+ 		}
 
  		/*=====  End of FIELDS  ======*/
 

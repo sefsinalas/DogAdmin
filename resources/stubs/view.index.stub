@@ -1,10 +1,17 @@
 @extends('layouts.dogadmin')
 
-@section('page_title', 'Dashboard')
-@section('page_heading', 'Dashboard')
+@section('page_title', '{{title}}')
+@section('page_heading', '{{title}}')
 
 @section('dogadmin-content')
+	<table>
+		<thead>
 
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
 @endsection
 
 @section('vendor_styles')

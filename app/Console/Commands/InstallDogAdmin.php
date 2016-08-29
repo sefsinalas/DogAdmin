@@ -37,18 +37,16 @@ class InstallDogAdmin extends Command
  		/*================================
  		=            SETEO BD            =
  		================================*/
-
  		Utils::changeEnv('DB_HOST', $data->general->DB->host);
  		Utils::changeEnv('DB_DATABASE', $data->general->DB->database);
  		Utils::changeEnv('DB_USERNAME', $data->general->DB->username);
  		Utils::changeEnv('DB_PASSWORD', $data->general->DB->password);
-
  		/*=====  End of SETEO BD  ======*/
+
 
  		/*=============================
  		=            LOGIN            =
  		=============================*/
-
  		\Artisan::call('migrate');
 
 		Utils::changeEnv('REDIRECT_ON_LOGIN', $data->general->redirect_on_login);
@@ -69,12 +67,20 @@ class InstallDogAdmin extends Command
 	        $this->info('Email: demo@demo.com');
 	        $this->info('Password: demo123');
 		}
-
  		/*=====  End of LOGIN  ======*/
 
 
+ 		/*==========================================
+ 		=            OPCIONES GENERALES            =
+ 		==========================================*/
+ 		Utils::changeEnv('TITLE', '"'.$data->general->title.'"');
+		$mini_title = (!isset($data->general->mini_title)) ? substr($data->general->title, 0, 3) : $data->general->mini_title;
+		Utils::changeEnv('MINI_TITLE', '"'.$mini_title.'"');
+ 		/*=====  End of OPCIONES GENERALES  ======*/
+
+
  		/*==============================
- 		=            FIELDS            =
+ 		=            MODULES           =
  		==============================*/
 
  		foreach ($data->modules as $m)
@@ -117,7 +123,7 @@ class InstallDogAdmin extends Command
 
  		\Artisan::call('migrate');
 
- 		/*=====  End of FIELDS  ======*/
+ 		/*=====  End of MODULES  ======*/
 
     }
 }

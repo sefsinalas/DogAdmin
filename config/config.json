@@ -8,7 +8,8 @@
 		},
 		"redirect_on_login": "/demo",
 		"redirect_after_logout": "/login",
-		"title": "BM Estudio"
+		"title": "BM Estudio",
+		"mini_title": "BME"
 	},
 	"modules":[
 		{
@@ -50,7 +51,7 @@
 		},
 		{
 			"general":{
-				"name": "portfolio",
+				"name": "Portfolio",
 				"table": "portfolio"
 			},
 			"fields":[

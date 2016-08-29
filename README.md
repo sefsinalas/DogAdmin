@@ -1,27 +1,33 @@
-# Laravel PHP Framework
+# DogAdmin
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[Documentación oficial (Requisitos, Instalación y demas)](https://docs.google.com/document/d/1vcM6b53ROd1zZs3FX30hY2y2DkzN4B0giPKQ6sHlLik/edit?usp=sharing)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Documentación sobre la configuración del archivo config.json
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+  - **general** `requerido`: Configuración general del proyecto
+    - **DB** `requerido`: Datos de conexión a la base de datos
+    - **redirect_on_login** `requerido`: A donde redireccionar en el login. Normalmente sera uno de los modulos. Ej: "/productos"
+    - **redirect_after_logout** `requerido`: A donde redireccionar al desloguearse. Normalmente sera siempre al formulario de login. Ej: "/login"
+    - **title** `requerido`: Título del proyecto. Se muestra en la parte superior izquierda del panel. Ej: "Estudio Yokohama"
+    - **mini_title** `opcional`: Título que aparece en la parte superior izquierda cuando el sidebar esta minimizado. Ej: "E.Y." Default: 3 primeros caracteres de *title*
+  - **modules** `requerido`: Array de modulos
+    - **general** `requerido`: Opciones generales para el modulo
+        - **name** `requerido`: Nombre del modulo. Se usara para visualizar en el sidebar y como titulo en las paginas del modulo. Ej: "Productos"
+        - **table** `requerido`: Tabla principal en la base de datos que se usara para almacenar los datos de este modulo. Ej: "productos"
+    - **fields** `requerido`: Array de campos para el modulo
+        - **title** `requerido`: Título del campo. Se usara principalmente como label en los formularios y como titulos en las tablas. Ej: "Precio"
+        - **type** `requerido`: Tipo del campo. Ver mas abajo para info completa sobre cada tipo de campo. Ej: "string"
 
-## Official Documentation
+## Tipos de campos
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+### string
 
-## Contributing
+**Base de datos**: Crea un campo tipo varchar(255)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+**Listados**: Muestra una porcion de maximo 50 caracteres de largo
 
-## Security Vulnerabilities
+**Formularios**: Es un campo tipo input text
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+**Opciones adicionales**
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*

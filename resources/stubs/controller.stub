@@ -22,7 +22,7 @@ class {{class}} extends Controller
     }
 
 	/**
-	 * Display a listing of {{model}}.
+	 * Muestra el listado de {{model}}.
 	 *
 	 * @return Response
 	 */
@@ -32,13 +32,13 @@ class {{class}} extends Controller
 	}
 
 	/**
-	 * Show the form for creating a new {{model}}.
+	 * Muestra el formulario para crear un nuevo {{model}}.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return view('{{view}}.add_edit');
+		return view('DogAdmin.{{view}}.add_edit');
 	}
 
 	/**

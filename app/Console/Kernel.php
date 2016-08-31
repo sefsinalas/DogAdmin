@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\ResetDogAdmin::class,
         Commands\CreateControllerDogAdmin::class,
         Commands\CreateIndexViewDogAdmin::class,
+        Commands\CreateAddEditViewDogAdmin::class,
     ];
 
     /**

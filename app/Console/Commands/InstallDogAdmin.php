@@ -119,6 +119,7 @@ class InstallDogAdmin extends Command
 
  			// crea las vistas
  			\Artisan::call('dogadmin:create_index_view', ['name' => $m->general->table]);
+ 			\Artisan::call('dogadmin:create_add_edit_view', ['name' => $m->general->table]);
  		}
 
  		\Artisan::call('migrate');

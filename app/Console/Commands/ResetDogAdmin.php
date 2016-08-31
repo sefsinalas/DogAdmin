@@ -85,6 +85,7 @@ class ResetDogAdmin extends Command
  			if (!empty($file))
  			{
  				File::delete($file[0].'/index.blade.php');
+ 				File::delete($file[0].'/add_edit.blade.php');
  				rmdir($file[0]);
  			}
  		}

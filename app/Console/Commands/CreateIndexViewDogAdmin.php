@@ -78,14 +78,14 @@ class CreateIndexViewDogAdmin extends Command
         /*======================================
         =            COLUMN CONTENT            =
         ======================================*/
-        $columns = '<td>{{ $item->id }}</td>'.PHP_EOL;
+        $columns = '<tr><td>{{ $item->id }}</td>'.PHP_EOL;
 
         foreach ($module->fields as $f)
         {
         	$columns .= Fields::tableContent($f, $data);
         }
 
-        $columns .= '<td></td>'.PHP_EOL;
+        $columns .= '<td></td></tr>'.PHP_EOL;
 
         $content = str_replace('{{columns}}', $columns, $content);
         /*=====  End of COLUMN CONTENT  ======*/

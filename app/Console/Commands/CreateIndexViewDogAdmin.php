@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use File;
 use App\Models\DogAdmin\Utils;
+use App\Models\DogAdmin\Fields;
 
 use App\User;
 
@@ -65,10 +66,7 @@ class CreateIndexViewDogAdmin extends Command
 
         foreach ($module->fields as $f)
         {
-        	if ($f->type == 'string')
-        	{
-        		$columnTitles .= '<th>'.$f->title.'</th>'.PHP_EOL;
-        	}
+        	$columnTitles .= Fields::tableTitle($f, $data);
         }
 
         $columnTitles .= '<th>Acciones</th>'.PHP_EOL;
@@ -84,13 +82,7 @@ class CreateIndexViewDogAdmin extends Command
 
         foreach ($module->fields as $f)
         {
-        	$name = (empty($f->name)) ? Utils::decamelize($f->title) : $f->name;
-
-        	if ($f->type == 'string')
-        	{
-        		$columns .= '<td>{{ $item->'.$name.' }}</td>'.PHP_EOL;
-        	}
-
+        	$columns .= Fields::tableContent($f, $data);
         }
 
         $columns .= '<td></td>'.PHP_EOL;

@@ -91,6 +91,14 @@ class CreateIndexViewDogAdmin extends Command
         /*=====  End of COLUMN CONTENT  ======*/
 
 
+        /*===============================
+        =            BUTTONS            =
+        ===============================*/
+        $content = str_replace('{{table}}', $module->general->table, $content);
+        /*=====  End of BUTTONS  ======*/
+
+
+
 
         /*=============================================
         =            DIRECTORIO Y ARCHIVOS            =

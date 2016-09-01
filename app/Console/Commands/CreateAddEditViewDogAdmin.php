@@ -53,10 +53,11 @@ class CreateAddEditViewDogAdmin extends Command
 
 
         /*==============================
-        =            TITTLE            =
+        =            COMMON            =
         ==============================*/
         $content = str_replace('{{title}}', $module->general->name, $content);
-        /*=====  End of TITTLE  ======*/
+        $content = str_replace('{{table}}', $module->general->table, $content);
+        /*=====  End of COMMON  ======*/
 
 
         /*==============================

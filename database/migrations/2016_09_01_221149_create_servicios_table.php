@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class {{class}} extends Migration
-{
+class CreateServiciosTable extends Migration {
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,7 +12,12 @@ class {{class}} extends Migration
 	 */
 	public function up()
 	{
-		{{schema_up}}
+		Schema::create('servicios', function(Blueprint $table)
+		{
+            $table->increments('id');
+			$table->string('titulo', 255);
+            $table->timestamps();
+		});
 	}
 
 	/**
@@ -22,6 +27,7 @@ class {{class}} extends Migration
 	 */
 	public function down()
 	{
-		{{schema_down}}
+		Schema::drop('servicios');
 	}
+
 }

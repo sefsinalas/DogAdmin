@@ -1,7 +1,7 @@
 @extends('layouts.dogadmin')
 
-@section('page_title', '{{title}}')
-@section('page_heading', '{{title}}')
+@section('page_title', 'Portfolio')
+@section('page_heading', 'Portfolio')
 
 @section('dogadmin-content')
 	<div class="box">
@@ -12,13 +12,23 @@
 	        <table class="table table-hover">
 				<thead>
 					<tr>
-						{{column-titles}}
+						<th>ID</th>
+<th>Titulo corto</th>
+<th>Titulo completo</th>
+<th>Texto</th>
+<th>Acciones</th>
+
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						@foreach ($items as $item)
-						    {{columns}}
+						    <tr><td>{{ $item->id }}</td>
+<td>{{ $item->titulo_corto }}</td>
+<td>{{ $item->titulo_completo }}</td>
+<td>{{ $item->texto }}</td>
+<td></td></tr>
+
 						@endforeach
 					</tr>
 				</tbody>
@@ -27,7 +37,7 @@
 		<div class="box-footer">
 			<div class="row">
 				<div class="col-md-2">
-					<a href="{{table}}/create" type="button" class="btn btn-block btn-primary">Agregar nuevo</a>
+					<a href="portfolio/create" type="button" class="btn btn-block btn-primary">Agregar nuevo</a>
 				</div>
 			</div>
 		</div>

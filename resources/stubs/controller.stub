@@ -49,11 +49,11 @@ class {{class}} extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, {{model}}::$rules, {{model}}::$messages);
+		$this->validate($request, {{model}}::$rules);
 
-        $this->createEntry({{model}}::class, $request->all());
+        {{model}}::create($request->all());
 
-        return Redirect::route('{{view}}.index');
+        return Redirect::route('{{view}}');
 	}
 
 	/**

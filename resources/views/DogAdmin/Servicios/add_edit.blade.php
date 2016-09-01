@@ -1,7 +1,7 @@
 @extends('layouts.dogadmin')
 
-@section('page_title', '{{title}}')
-@section('page_heading', '{{title}}')
+@section('page_title', 'Servicios')
+@section('page_heading', 'Servicios')
 
 @section('dogadmin-content')
     <div class="row">
@@ -15,9 +15,14 @@
 
                 <div class="box-body">
 
-                    {!! Form::open(['method' => isset($item)? 'put':'post', 'url' => '{{table}}' . (isset($item) ? '/'.$item->id : '')]) !!}
+                    {!! Form::open(['method' => isset($item)? 'put':'post', 'url' => 'servicios' . (isset($item) ? '/'.$item->id : '')]) !!}
 
-                    {{fields}}
+                    <section class="form-group">
+    <label>Titulo</label>
+    <input type="text" class="form-control" name="titulo" placeholder="Titulo" value="{{ ($errors && $errors->any() ? old('description') : (isset($item)? $item->description : '')) }}">
+</section>
+
+
 
                     <div class="input-group">
 				            <span class="input-group-btn">

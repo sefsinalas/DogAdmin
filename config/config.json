@@ -131,34 +131,14 @@
 			"icon_class": "fa fa-building"
 		},
 		{
-			"title": "Portfolio",
-			"module": "portfolio",
-			"icon_class": "fa fa-briefcase"
-		},
-		{
-			"title": "Contacto",
-			"module": "contacto",
-			"icon_class": "fa fa-envelope"
-		},
-		{
 			"title": "Todos",
 			"icon_class": "fa fa-list",
 			"submenus": [
 				{
-					"title": "Inicio",
-					"module": "home",
-					"icon_class": "fa fa-home",
-					"count_color": "green"
-				},
-				{
-					"title": "Servicios",
-					"module": "servicios",
-					"icon_class": "fa fa-building"
-				},
-				{
 					"title": "Portfolio",
 					"module": "portfolio",
-					"icon_class": "fa fa-briefcase"
+					"icon_class": "fa fa-briefcase",
+					"count_color": "green"
 				},
 				{
 					"title": "Contacto",

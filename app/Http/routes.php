@@ -33,5 +33,17 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/servicios', 'ServiciosController@store');
     Route::get('/servicios/destroy/{id}', 'ServiciosController@destroy');
     Route::get('/servicios/{id}', 'ServiciosController@show');
+
+    Route::get('/portfolio', 'PortfolioController@index');
+    Route::get('/portfolio/create', 'PortfolioController@create');
+    Route::post('/portfolio', 'PortfolioController@store');
+    Route::get('/portfolio/destroy/{id}', 'PortfolioController@destroy');
+    Route::get('/portfolio/{id}', 'PortfolioController@show');
+
+    Route::get('/contacto', 'ContactoController@index');
+    Route::get('/contacto/create', 'ContactoController@create');
+    Route::post('/contacto', 'ContactoController@store');
+    Route::get('/contacto/destroy/{id}', 'ContactoController@destroy');
+    Route::get('/contacto/{id}', 'ContactoController@show');
 });
 

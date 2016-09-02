@@ -2,6 +2,8 @@
 
 namespace App\Models\DogAdmin;
 
+use App\Models\DogAdmin\Utils;
+
 use File;
 
 class Config{
@@ -34,6 +36,18 @@ class Config{
 	public function getMenusData()
 	{
 		return $this->data->menus;
+	}
+
+	public function getSubmenusCamelized($submenus)
+	{
+		$data = [];
+
+		foreach ($submenus as $submenu)
+		{
+			$data[] = Utils::camelize($submenu->module);
+		}
+
+		return $data;
 	}
 
 	/**

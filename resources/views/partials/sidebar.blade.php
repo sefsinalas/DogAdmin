@@ -13,7 +13,7 @@
             <li class="header">MENU</li>
             @include('partials.sidebar_menu')
             <li class="header">ADMINISTRACIÓN</li>
-            <li><a href="{{ url('/users') }}"><i class='fa fa-users'></i> <span>User Manager</span></a></li>
+            <li><a href="{{ url('/users') }}"><i class='fa fa-users'></i> <span>Usuarios</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

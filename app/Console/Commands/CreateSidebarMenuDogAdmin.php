@@ -10,6 +10,8 @@ use App\Models\DogAdmin\Config;
 
 use App\User;
 
+use Log;
+
 class CreateSidebarMenuDogAdmin extends Command
 {
     /**
@@ -49,7 +51,11 @@ class CreateSidebarMenuDogAdmin extends Command
         	// si el menu tiene submenu
         	if (isset($menu->submenus))
         	{
-        		$content .= '<li class="treeview">'.PHP_EOL;
+        		$submenusCamelized = $config->getSubmenusCamelized($menu->submenus);
+        		array_walk($submenusCamelized, function(&$item) { $item = '$module == "'.$item.'"'; });
+        		$active = '{{ '.implode(' || ', $submenusCamelized).' ? "active" : "" }}';
+
+        		$content .= "<li class='treeview $active'>".PHP_EOL;
         		$content .= "<a href='#''><i class='$icon'></i> <span>$menu->title</span> <i class='fa fa-angle-right pull-right'></i></a>".PHP_EOL;
         		$content .= '<ul class="treeview-menu">'.PHP_EOL;
 
@@ -59,11 +65,14 @@ class CreateSidebarMenuDogAdmin extends Command
         			$icon = (isset($submenu->icon_class)) ? $submenu->icon_class : '';
         			$module = $config->getModuleData($submenu->module);
 
+        			// para agregar class active al menu
+        			$active = '{{ $module == "'.Utils::camelize($module->general->table).'" ? "active" : "" }}';
+
         			// cada submenu puede tener un contador de distintos colores
         			$count = (isset($submenu->count_color)) ? '<span class="pull-right-container"><small class="label pull-right bg-'.$submenu->count_color.'">{{ $'.$module->general->table.'::count() }}</small></span>' : '';
         			$include .= ($count != '') ? "@inject('".$module->general->table."', 'App\Models\\".Utils::camelize($module->general->table)."')".PHP_EOL : '';
 
-        			$content .= "<li><a href='/".$module->general->table."'><i class='$icon'></i> $submenu->title $count</a></li>".PHP_EOL;
+        			$content .= "<li class='$active'><a href='/".$module->general->table."'><i class='$icon'></i> $submenu->title $count</a></li>".PHP_EOL;
         		}
 
         		$content .= '</ul>'.PHP_EOL;

@@ -122,6 +122,9 @@ class InstallDogAdmin extends Command
  			\Artisan::call('dogadmin:create_index_view', ['name' => $m->general->table]);
  			\Artisan::call('dogadmin:create_add_edit_view', ['name' => $m->general->table]);
  			\Artisan::call('dogadmin:create_show_view', ['name' => $m->general->table]);
+
+ 			// creo las rutas
+ 			\Artisan::call('dogadmin:create_route', ['name' => $m->general->table]);
  		}
 
  		// crea el menu

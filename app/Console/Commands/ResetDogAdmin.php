@@ -103,9 +103,18 @@ class ResetDogAdmin extends Command
 		{
 			File::delete($file[0]);
 		}
-
  		/*=====  End of MENU  ======*/
 
+
+ 		/*==============================
+ 		=            ROUTES            =
+ 		==============================*/
+ 		$content = File::get('app/Http/routes.php');
+
+ 		$content = preg_replace('/\/\/ start[\s\S]+?\/\/ finish/', '', $content);
+
+ 		File::put("app/Http/routes.php", $content);
+ 		/*=====  End of ROUTES  ======*/
 
     }
 }

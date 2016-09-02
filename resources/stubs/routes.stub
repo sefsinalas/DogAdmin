@@ -1,0 +1,16 @@
+// start
+// do not remove the previous comment
+Route::group(['middleware' => ['web']], function() {
+
+    Route::get('/{{table}}', 'DogAdmin\{{model}}Controller@index');
+    Route::get('/{{table}}/create', 'DogAdmin\{{model}}Controller@create');
+    Route::post('/{{table}}', 'DogAdmin\{{model}}Controller@store');
+    Route::get('/{{table}}/destroy/{id}', 'DogAdmin\{{model}}Controller@destroy');
+    Route::get('/{{table}}/{id}', 'DogAdmin\{{model}}Controller@show');
+    Route::get('/{{table}}/edit/{id}', 'DogAdmin\{{model}}Controller@edit');
+    Route::post('/{{table}}/update', 'DogAdmin\{{model}}Controller@update');
+
+});
+// do not remove the next comment
+// finish
+

@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
         Commands\CreateControllerDogAdmin::class,
         Commands\CreateIndexViewDogAdmin::class,
         Commands\CreateAddEditViewDogAdmin::class,
+        Commands\CreateSidebarMenuDogAdmin::class,
     ];
 
     /**

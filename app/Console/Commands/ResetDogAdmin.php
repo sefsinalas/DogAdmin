@@ -92,5 +92,19 @@ class ResetDogAdmin extends Command
 
  		/*=====  End of FIELDS  ======*/
 
+ 		/*============================
+ 		=            MENU            =
+ 		============================*/
+ 		// borra el partial de menu
+		$file = File::glob('resources/views/partials/sidebar_menu.blade.php');
+
+		if (!empty($file))
+		{
+			File::delete($file[0]);
+		}
+
+ 		/*=====  End of MENU  ======*/
+
+
     }
 }

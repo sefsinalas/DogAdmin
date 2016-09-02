@@ -69,8 +69,6 @@ class CreateIndexViewDogAdmin extends Command
         	$columnTitles .= Fields::tableTitle($f, $data);
         }
 
-        $columnTitles .= '<th>Acciones</th>'.PHP_EOL;
-
         $content = str_replace('{{column-titles}}', $columnTitles, $content);
         /*=====  End of COLUMN TITLES  ======*/
 
@@ -78,14 +76,18 @@ class CreateIndexViewDogAdmin extends Command
         /*======================================
         =            COLUMN CONTENT            =
         ======================================*/
-        $columns = '<tr><td>{{ $item->id }}</td>'.PHP_EOL;
+        $columns = '<tr>'.PHP_EOL.'<td>{{ $item->id }}</td>'.PHP_EOL;
 
         foreach ($module->fields as $f)
         {
         	$columns .= Fields::tableContent($f, $data);
         }
 
-        $columns .= '<td></td></tr>'.PHP_EOL;
+        $columns .= '<td>
+        				<a href="home/{{ $item->id }}"><i class="fa fa-fw fa-eye fa-lg text-primary"></i></a>
+        				<a href="home/edit/{{ $item->id }}"><i class="fa fa-fw fa-edit fa-lg text-success"></i></a>
+        				<a href="home/destroy/{{ $item->id }}"><i class="fa fa-fw fa-trash fa-lg text-danger" onclick="return confirm("Estas seguro?")"></i></a>
+        			</td>'.PHP_EOL.'</tr>'.PHP_EOL;
 
         $content = str_replace('{{columns}}', $columns, $content);
         /*=====  End of COLUMN CONTENT  ======*/

@@ -70,41 +70,41 @@ class {{class}} extends Controller
 	/**
 	 * Show the form for editing the specified {{model}}.
 	 *
-	 * @param {{model}} ${{collection}}
+	 * @param $id integer ID de: {{model}}
      * @return Response
      */
-    public function edit({{model}} ${{collection}})
+    public function edit($id)
 	{
-		return view('{{view}}.add_edit', ['item' => ${{collection}}]);
+		$item = {{model}}::find($id);
+		return view('{{view}}.add_edit', ['item' => $item]);
 	}
 
 	/**
 	 * Update the specified {{model}} in storage.
 	 *
-	 * @param {{model}}  ${{collection}}
+	 * @param $id integer ID de: {{model}}
      * @param Request    $request
      * @return Response
      */
-    public function update({{model}} ${{collection}}, Request $request)
+    public function update($id, Request $request)
 	{
-		$this->validate($request, {{model}}::$rules, {{model}}::$messages);
+		$this->validate($request, {{model}}::$rules);
 
-        $this->updateEntry(${{collection}}, $request->all());
+        {{model}}::find($id)->update($request->all());
 
-        return Redirect::route('{{view}}.index');
+        return redirect('{{table}}');
 	}
 
 	/**
 	 * Remove the specified {{model}} from storage.
 	 *
-	 * @param {{model}}  ${{collection}}
-     * @param Request    $request
-	 * @return Response
+	 * @param $id integer ID de: {{model}}
+	 * @return Redirect
 	 */
-	public function destroy({{model}} ${{collection}}, Request $request)
+	public function destroy($id)
 	{
-		$this->deleteEntry(${{collection}}, $request);
+		{{model}}::find($id)->delete();
 
-        return Redirect::route('{{view}}.index');
+        return redirect('{{table}}');
 	}
 }

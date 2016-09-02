@@ -79,13 +79,14 @@ class ResetDogAdmin extends Command
  				File::delete($file[0]);
  			}
 
- 			// borra los controllers
+ 			// borra las vistas
  			$file = File::glob('resources/views/DogAdmin/'.Utils::camelize($m->general->table));
 
  			if (!empty($file))
  			{
  				File::delete($file[0].'/index.blade.php');
  				File::delete($file[0].'/add_edit.blade.php');
+ 				File::delete($file[0].'/show.blade.php');
  				rmdir($file[0]);
  			}
  		}

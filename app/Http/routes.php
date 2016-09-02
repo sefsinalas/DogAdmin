@@ -22,28 +22,36 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/profile', 'ProfileController@update');
     Route::get('/users', 'UsersController@index');
 
-    Route::get('/home', 'HomeController@index');
-    Route::get('/home/create', 'HomeController@create');
-    Route::post('/home', 'HomeController@store');
-    Route::get('/home/destroy/{id}', 'HomeController@destroy');
-    Route::get('/home/{id}', 'HomeController@show');
+    Route::get('/home', 'DogAdmin\HomeController@index');
+    Route::get('/home/create', 'DogAdmin\HomeController@create');
+    Route::post('/home', 'DogAdmin\HomeController@store');
+    Route::get('/home/destroy/{id}', 'DogAdmin\HomeController@destroy');
+    Route::get('/home/{id}', 'DogAdmin\HomeController@show');
+    Route::get('/home/edit/{id}', 'DogAdmin\HomeController@edit');
+    Route::post('/home/update', 'DogAdmin\HomeController@update');
 
-    Route::get('/servicios', 'ServiciosController@index');
-    Route::get('/servicios/create', 'ServiciosController@create');
-    Route::post('/servicios', 'ServiciosController@store');
-    Route::get('/servicios/destroy/{id}', 'ServiciosController@destroy');
-    Route::get('/servicios/{id}', 'ServiciosController@show');
+    Route::get('/servicios', 'DogAdmin\ServiciosController@index');
+    Route::get('/servicios/create', 'DogAdmin\ServiciosController@create');
+    Route::post('/servicios', 'DogAdmin\ServiciosController@store');
+    Route::get('/servicios/destroy/{id}', 'DogAdmin\ServiciosController@destroy');
+    Route::get('/servicios/{id}', 'DogAdmin\ServiciosController@show');
+    Route::get('/servicios/update/{id}', 'DogAdmin\ServiciosController@edit');
+    Route::post('/servicios/update', 'DogAdmin\ServiciosController@update');
 
-    Route::get('/portfolio', 'PortfolioController@index');
-    Route::get('/portfolio/create', 'PortfolioController@create');
-    Route::post('/portfolio', 'PortfolioController@store');
-    Route::get('/portfolio/destroy/{id}', 'PortfolioController@destroy');
-    Route::get('/portfolio/{id}', 'PortfolioController@show');
+    Route::get('/portfolio', 'DogAdmin\PortfolioController@index');
+    Route::get('/portfolio/create', 'DogAdmin\PortfolioController@create');
+    Route::post('/portfolio', 'DogAdmin\PortfolioController@store');
+    Route::get('/portfolio/destroy/{id}', 'DogAdmin\PortfolioController@destroy');
+    Route::get('/portfolio/{id}', 'DogAdmin\PortfolioController@show');
+    Route::get('/portfolio/edit/{id}', 'DogAdmin\PortfolioController@edit');
+    Route::post('/portfolio/update', 'DogAdmin\PortfolioController@update');
 
-    Route::get('/contacto', 'ContactoController@index');
-    Route::get('/contacto/create', 'ContactoController@create');
-    Route::post('/contacto', 'ContactoController@store');
-    Route::get('/contacto/destroy/{id}', 'ContactoController@destroy');
-    Route::get('/contacto/{id}', 'ContactoController@show');
+    Route::get('/contacto', 'DogAdmin\ContactoController@index');
+    Route::get('/contacto/create', 'DogAdmin\ContactoController@create');
+    Route::post('/contacto', 'DogAdmin\ContactoController@store');
+    Route::get('/contacto/destroy/{id}', 'DogAdmin\ContactoController@destroy');
+    Route::get('/contacto/{id}', 'DogAdmin\ContactoController@show');
+    Route::get('/contacto/edit/{id}', 'DogAdmin\ContactoController@edit/{id}');
+    Route::post('/contacto/update', 'DogAdmin\ContactoController@update');
 });
 

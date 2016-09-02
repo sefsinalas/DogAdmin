@@ -115,4 +115,24 @@ class Fields{
     		return '<td>{{ $item->'.$name.' }}</td>'.PHP_EOL;
     	}
 	}
+
+
+	/**
+	 * Devuelve el HTML correspondiente a como se visualizara el campo en la vista SHOW
+	 * @param  object $field  Datos del campo
+	 * @param  object $config Datos del proyecto
+	 * @return string HTML del campo
+	 */
+	public static function show($field, $config)
+	{
+		/*==============================
+		=            STRING            =
+		==============================*/
+		if ($field->type == 'string')
+    	{
+    		$name = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+    		return '<td><strong><small>'.$field->title.'</small></strong><br>{{ $item->'.$name.' }}</td>'.PHP_EOL;
+    	}
+
+	}
 }

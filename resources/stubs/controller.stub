@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\DogAdmin;
 
 {{models}}
 use Illuminate\Http\Requests;
@@ -9,7 +9,7 @@ use Redirect;
 
 use Illuminate\Http\Request;
 
-class {{class}} extends Controller
+class {{class}} extends DogController
 {
 	/**
      * Create a new controller instance.
@@ -59,12 +59,13 @@ class {{class}} extends Controller
 	/**
 	 * Display the specified {{model}}.
 	 *
-	 * @param {{model}} ${{collection}}
+	 * @param $id integer ID del item
 	 * @return Response
 	 */
-	public function show({{model}} ${{collection}})
+	public function show($id)
 	{
-		return view('{{view}}.show', ['item' => ${{collection}}]);
+		${{table}} = {{model}}::find($id);
+		return view('DogAdmin.{{view}}.show', ['item' => ${{table}}]);
 	}
 
 	/**
@@ -76,7 +77,7 @@ class {{class}} extends Controller
     public function edit($id)
 	{
 		$item = {{model}}::find($id);
-		return view('{{view}}.add_edit', ['item' => $item]);
+		return view('DogAdmin.{{view}}.add_edit', ['item' => $item]);
 	}
 
 	/**

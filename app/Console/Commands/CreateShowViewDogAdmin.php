@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use File;
 use App\Models\DogAdmin\Utils;
 use App\Models\DogAdmin\Fields;
+use App\Models\DogAdmin\Config;
 
 use App\User;
 
@@ -32,47 +33,33 @@ class CreateShowViewDogAdmin extends Command
      */
     public function handle()
     {
-        $content = File::get("resources/stubs/view.add_edit.stub");
+        $content = File::get("resources/stubs/view.show.stub");
 
-        $json = File::get("config/config.json");
-        $data = json_decode($json);
+        $config = new Config;
+        $data = $config->getData();
 
-        /*==============================================================
-        =            BUSCO EL MODULO PARA OBTENER SUS DATOS            =
-        ==============================================================*/
-        foreach ($data->modules as $m)
-        {
-        	if ($m->general->table == $this->argument('name'))
-        	{
-        		$module = $m;
-        	}
-        }
-
-        $camel = Utils::camelize($module->general->table);
-        /*=====  End of BUSCO EL MODULO PARA OBTENER SUS DATOS  ======*/
-
+        $module = $config->getModuleData($this->argument('name'));
 
         /*==============================
-        =            COMMON            =
+        =            TITTLE            =
         ==============================*/
         $content = str_replace('{{title}}', $module->general->name, $content);
         $content = str_replace('{{table}}', $module->general->table, $content);
-        /*=====  End of COMMON  ======*/
-
+        /*=====  End of TITTLE  ======*/
 
         /*==============================
         =            FIELDS            =
         ===============================*/
-        $fields = '';
-        foreach ($module->fields as $f)
-        {
-        	$fields .= Fields::inForm($f, $data);
-        }
 
-        $content = str_replace('{{fields}}', $fields, $content);
-        /*=====  End of FIELDS  ======*/
+    	$camel = Utils::camelize($module->general->table);
+    	$fields = '';
 
+    	foreach ($module->fields as $f)
+    	{
+    		$fields .= '<tr>'.PHP_EOL.Fields::show($f, $data).'</tr>'.PHP_EOL;
+    	}
 
+    	$html = str_replace('{{fields}}', $fields, $content);
 
         /*=============================================
         =            DIRECTORIO Y ARCHIVOS            =
@@ -87,10 +74,11 @@ class CreateShowViewDogAdmin extends Command
 		  	mkdir("resources/views/DogAdmin/".$camel);
 		}
 
-        File::put("resources/views/DogAdmin/".$camel.'/add_edit.blade.php', $content);
+        File::put("resources/views/DogAdmin/".$camel.'/show.blade.php', $html);
         /*=====  End of DIRECTORIO Y ARCHIVOS  ======*/
 
 
+        /*=====  End of FIELDS  ======*/
 
     }
 }

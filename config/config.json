@@ -21,15 +21,18 @@
 				{
 					"title": "Titulo 1",
 					"type": "string",
-					"name": "titulo_principal"
+					"name": "titulo_principal",
+					"fake": "word"
 				},
 				{
 					"title": "Titulo 2",
-					"type": "string"
+					"type": "string",
+					"fake": "sentence(2)"
 				},
 				{
 					"title": "Texto",
-					"type": "text"
+					"type": "text",
+					"fake": "text"
 				}
 			]
 		},
@@ -45,7 +48,8 @@
 				},
 				{
 					"title": "Titulo",
-					"type": "string"
+					"type": "string",
+					"fake": "sentence(3)"
 				}
 			]
 		},
@@ -57,7 +61,8 @@
 			"fields":[
 				{
 					"title": "Titulo corto",
-					"type": "string"
+					"type": "string",
+					"fake": "word"
 				},
 				{
 					"title": "Imagen portada",
@@ -65,11 +70,13 @@
 				},
 				{
 					"title": "Titulo completo",
-					"type": "string"
+					"type": "string",
+					"fake": "sentence"
 				},
 				{
 					"title": "Texto",
-					"type": "text"
+					"type": "text",
+					"fake": "sentence"
 				},
 				{
 					"title": "Galeria",
@@ -85,35 +92,43 @@
 			"fields":[
 				{
 					"title": "Email",
-					"type": "string"
+					"type": "string",
+					"fake": "email"
 				},
 				{
 					"title": "Dirección",
-					"type": "string"
+					"type": "string",
+					"fake": "address"
 				},
 				{
 					"title": "Localidad",
-					"type": "string"
+					"type": "string",
+					"fake": "city"
 				},
 				{
 					"title": "URL Facebook",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL Behance",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL Vimeo",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL Pinterest",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL LinkedIn",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				}
 			]
 		}

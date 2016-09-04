@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
         Commands\CreateSidebarMenuDogAdmin::class,
         // Dogadmin: routes
         Commands\CreateRoutesDogAdmin::class,
+        // DogAdmin: seeders
+        Commands\CreateSeedersDogAdmin::class,
     ];
 
     /**

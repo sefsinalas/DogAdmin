@@ -2,6 +2,8 @@
 
 namespace App\Models\DogAdmin;
 
+use App\Models\DogAdmin\Utils;
+
 use File;
 
 class Fields{
@@ -134,5 +136,26 @@ class Fields{
     		return '<td><strong><small>'.$field->title.'</small></strong><br>{{ $item->'.$name.' }}</td>'.PHP_EOL;
     	}
 
+	}
+
+	/**
+	 * Devuelve el nombre del campo en la BD
+	 * @param  object $field campo en forma de objeto
+	 * @return string        nombre del campo en la base de datos
+	 */
+	public static function getDbName($field)
+	{
+		switch ($field->type)
+		{
+			case 'value':
+				# code...
+				break;
+
+			default:
+				$name = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+				break;
+		}
+
+		return $name;
 	}
 }

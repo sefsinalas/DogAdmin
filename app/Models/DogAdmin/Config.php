@@ -38,6 +38,11 @@ class Config{
 		return $this->data->menus;
 	}
 
+	/**
+	 * Datos de los submenus de un modulo
+	 * @param  [type] $submenus [description]
+	 * @return [type]           [description]
+	 */
 	public function getSubmenusCamelized($submenus)
 	{
 		$data = [];
@@ -48,6 +53,15 @@ class Config{
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Datos de los modulos
+	 * @return array modulos
+	 */
+	public function getModulesData()
+	{
+		return $this->data->modules;
 	}
 
 	/**

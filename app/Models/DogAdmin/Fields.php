@@ -3,8 +3,7 @@
 namespace App\Models\DogAdmin;
 
 use App\Models\DogAdmin\Utils;
-
-use File;
+use App\Models\DogAdmin\Stubs;
 
 class Fields{
 
@@ -22,7 +21,12 @@ class Fields{
 		if ($field->type == 'string')
 		{
 			// obtengo el template
-			$fieldTemplate = File::get('resources/stubs/fields/'.$field->type.'.stub');
+			$fieldTemplate = Stubs::get('fields/'.$field->type.'.stub');
+
+			if (empty($fieldTemplate))
+			{
+				return '';
+			}
 
 			/*========================================
 			=            REEMPLAZO CAMPOS            =
@@ -46,7 +50,12 @@ class Fields{
 		if ($field->type == 'text')
 		{
 			// obtengo el template
-			$fieldTemplate = File::get('resources/stubs/fields/'.$field->type.'.stub');
+			$fieldTemplate = Stubs::get('fields/'.$field->type.'.stub');
+
+			if (empty($fieldTemplate))
+			{
+				return '';
+			}
 
 			/*========================================
 			=            REEMPLAZO CAMPOS            =
@@ -99,13 +108,23 @@ class Fields{
 	 */
 	public static function tableContent($field, $config)
 	{
+		$content = Stubs::get("fields/$field->type/listing.stub");
+
+		if (empty($content))
+		{
+			return '';
+		}
+
+		$properties = get_object_vars($field);
+
 		/*==============================
 		=            STRING            =
 		==============================*/
 	   	if ($field->type == 'string')
     	{
-    		$name = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-    		return '<td>{{ $item->'.$name.' }}</td>'.PHP_EOL;
+    		$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+
+    		return Stubs::replace($content, $properties);
     	}
 
     	/*============================
@@ -113,8 +132,9 @@ class Fields{
 		============================*/
 	   	if ($field->type == 'text')
     	{
-    		$name = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-    		return '<td>{{ $item->'.$name.' }}</td>'.PHP_EOL;
+    		$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+
+    		return Stubs::replace($content, $properties);
     	}
 	}
 

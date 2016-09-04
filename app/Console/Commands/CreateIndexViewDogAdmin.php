@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use File;
 use App\Models\DogAdmin\Utils;
 use App\Models\DogAdmin\Fields;
+use App\Models\DogAdmin\Config;
 
 use App\User;
 
@@ -34,21 +35,15 @@ class CreateIndexViewDogAdmin extends Command
     {
         $content = File::get("resources/stubs/view.index.stub");
 
-        $json = File::get("config/config.json");
-        $data = json_decode($json);
+        $config =  new Config;
+        $data = $config->getData();
 
         /*==============================================================
         =            BUSCO EL MODULO PARA OBTENER SUS DATOS            =
         ==============================================================*/
-        foreach ($data->modules as $m)
-        {
-        	if ($m->general->table == $this->argument('name'))
-        	{
-        		$module = $m;
-        	}
-        }
+        $module = $config->getModuleData($this->argument('name'));
 
-        $camel = Utils::camelize($module->general->table);
+        $moduleCamel = Utils::camelize($module->general->table);
         /*=====  End of BUSCO EL MODULO PARA OBTENER SUS DATOS  ======*/
 
 
@@ -83,11 +78,11 @@ class CreateIndexViewDogAdmin extends Command
         	$columns .= Fields::tableContent($f, $data);
         }
 
-        $columns .= '<td>
-        				<a href="home/{{ $item->id }}"><i class="fa fa-fw fa-eye fa-lg text-primary"></i></a>
-        				<a href="home/edit/{{ $item->id }}"><i class="fa fa-fw fa-edit fa-lg text-success"></i></a>
-        				<a href="home/destroy/{{ $item->id }}"><i class="fa fa-fw fa-trash fa-lg text-danger" onclick="return confirm("Estas seguro?")"></i></a>
-        			</td>'.PHP_EOL.'</tr>'.PHP_EOL;
+        $columns .= '<td>';
+        $columns .= '<a href="home/{{ $item->id }}"><i class="fa fa-fw fa-eye fa-lg text-primary"></i></a>';
+        $columns .= '<a href="home/edit/{{ $item->id }}"><i class="fa fa-fw fa-edit fa-lg text-success"></i></a>';
+       	$columns .= '<a href="home/destroy/{{ $item->id }}"><i class="fa fa-fw fa-trash fa-lg text-danger" onclick="return confirm("Estas seguro?")"></i></a>';
+       	$columns .= '</td>'.PHP_EOL.'</tr>'.PHP_EOL;
 
         $content = str_replace('{{columns}}', $columns, $content);
         /*=====  End of COLUMN CONTENT  ======*/
@@ -110,12 +105,12 @@ class CreateIndexViewDogAdmin extends Command
 		  	mkdir("resources/views/DogAdmin");
 		}
 
-		if (!is_dir("resources/views/DogAdmin/".$camel))
+		if (!is_dir("resources/views/DogAdmin/".$moduleCamel))
         {
-		  	mkdir("resources/views/DogAdmin/".$camel);
+		  	mkdir("resources/views/DogAdmin/".$moduleCamel);
 		}
 
-        File::put("resources/views/DogAdmin/".$camel.'/index.blade.php', $content);
+        File::put("resources/views/DogAdmin/".$moduleCamel.'/index.blade.php', $content);
         /*=====  End of DIRECTORIO Y ARCHIVOS  ======*/
 
 

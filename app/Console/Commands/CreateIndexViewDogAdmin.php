@@ -48,10 +48,11 @@ class CreateIndexViewDogAdmin extends Command
 
 
         /*==============================
-        =            TITTLE            =
+        =            COMMON            =
         ==============================*/
         $content = str_replace('{{title}}', $module->general->name, $content);
-        /*=====  End of TITTLE  ======*/
+        $content = str_replace('{{table}}', $module->general->table, $content);
+        /*=====  End of COMMON  ======*/
 
 
         /*====================================
@@ -86,15 +87,6 @@ class CreateIndexViewDogAdmin extends Command
 
         $content = str_replace('{{columns}}', $columns, $content);
         /*=====  End of COLUMN CONTENT  ======*/
-
-
-        /*===============================
-        =            BUTTONS            =
-        ===============================*/
-        $content = str_replace('{{table}}', $module->general->table, $content);
-        /*=====  End of BUTTONS  ======*/
-
-
 
 
         /*=============================================

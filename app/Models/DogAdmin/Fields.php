@@ -15,63 +15,28 @@ class Fields{
 	 */
 	public static function inForm($field, $config)
 	{
-		/*==============================
-		=            STRING            =
-		==============================*/
-		if ($field->type == 'string')
+		$content = Stubs::get("fields/$field->type/form.stub");
+
+		if (empty($content))
 		{
-			// obtengo el template
-			$fieldTemplate = Stubs::get('fields/'.$field->type.'.stub');
-
-			if (empty($fieldTemplate))
-			{
-				return '';
-			}
-
-			/*========================================
-			=            REEMPLAZO CAMPOS            =
-			========================================*/
-
-			$fieldTemplate = str_replace('{{title}}', $field->title, $fieldTemplate);
-
-    		$fieldName = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-
-    		$fieldTemplate = str_replace('{{name}}', $fieldName, $fieldTemplate);
-
-			/*=====  End of REEMPLAZO CAMPOS  ======*/
-
-			// devuelvo campos
-    		return $fieldTemplate.PHP_EOL.PHP_EOL;
+			return '';
 		}
 
-		/*============================
-		=            TEXT            =
-		============================*/
-		if ($field->type == 'text')
+		$properties = get_object_vars($field);
+
+		switch ($field->type)
 		{
-			// obtengo el template
-			$fieldTemplate = Stubs::get('fields/'.$field->type.'.stub');
+			case 'string':
+			case 'text':
+				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+				break;
 
-			if (empty($fieldTemplate))
-			{
-				return '';
-			}
-
-			/*========================================
-			=            REEMPLAZO CAMPOS            =
-			========================================*/
-
-			$fieldTemplate = str_replace('{{title}}', $field->title, $fieldTemplate);
-
-    		$fieldName = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-
-    		$fieldTemplate = str_replace('{{name}}', $fieldName, $fieldTemplate);
-
-			/*=====  End of REEMPLAZO CAMPOS  ======*/
-
-			// devuelvo campos
-    		return $fieldTemplate.PHP_EOL.PHP_EOL;
+			default:
+				# code...
+				break;
 		}
+
+		return Stubs::replace($content, $properties);
 	}
 
 	/**
@@ -117,25 +82,19 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		/*==============================
-		=            STRING            =
-		==============================*/
-	   	if ($field->type == 'string')
-    	{
-    		$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+		switch ($field->type)
+		{
+			case 'string':
+			case 'text':
+				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+				break;
 
-    		return Stubs::replace($content, $properties);
-    	}
+			default:
+				# code...
+				break;
+		}
 
-    	/*============================
-		=            TEXT            =
-		============================*/
-	   	if ($field->type == 'text')
-    	{
-    		$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-
-    		return Stubs::replace($content, $properties);
-    	}
+    	return Stubs::replace($content, $properties);
 	}
 
 

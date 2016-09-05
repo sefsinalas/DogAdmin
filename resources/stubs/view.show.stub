@@ -1,51 +1,48 @@
-@extends('layouts.admin')
+@extends('layouts.dogadmin')
 
-@section('content')
+@section('page_title', '{{title}}')
+@section('page_heading', '{{title}}')
+
+@section('dogadmin-content')
     <div class="row">
         <div class="col-xs-12">
-            <div class="box box-primary box-solid">
+            <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <span><i class="fa fa-eye"></i></span>
-                        <span>{{collectionUpper}} - {{ $item->title }}</span>
+                        Detalle
                     </h3>
                 </div>
 
-                <div class="box-body no-padding">
+                <div class="box-body table-responsive no-padding">
 
-                    @include('admin.partials.info')
-
-                    <form>
-						<fieldset>
-							<div class="row">
-								<section class="col col-6">
-									<section class="form-group">
-										<label>Title</label>
-										<input type="text" class="form-control" value="{{ $item->title }}" readonly>
-									</section>
-								</section>
-
-								<section class="col col-6">
-									<section class="form-group">
-										<label>Slug</label>
-										<input type="text" class="form-control" value="{{ $item->slug }}" readonly>
-									</section>
-								</section>
-							</div>
-
-							<section class="form-group">
-								<label>Description</label>
-								<div class="well well-light well-form-description">
-									{!! $item->description !!}
-								</div>
-							</section>
-						</fieldset>
-
-                    	@include('admin.partials.form_footer', ['submit' => false])
-
-                    </form>
+                	<table class="table table-bordered table-striped">
+        	            <tbody>
+        	                {{fields}}
+        	            </tbody>
+        	        </table>
                 </div>
+
+                <div class="box-footer">
+					<div class="row">
+						<div class="col-md-6">
+							<a href="/{{table}}/create" class="btn btn-primary">Agregar</a>
+							<a href="/{{table}}" class="btn btn-default">Ver listado</a>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('vendor_styles')
+
+@endsection
+
+@section('vendor_scripts')
+
+@endsection
+
+@section('scripts')
+
 @endsection

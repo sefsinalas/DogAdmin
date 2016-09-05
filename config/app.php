@@ -160,7 +160,8 @@ return [
          * DogAdmin
          */
         Syahzul\AdminTheme\ServiceProvider::class,
-        Mayconbordin\Laragen\GeneratorServiceProvider::class
+        Mayconbordin\Laragen\GeneratorServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -207,6 +208,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+      	'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

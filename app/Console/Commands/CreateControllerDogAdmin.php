@@ -42,6 +42,7 @@ class CreateControllerDogAdmin extends Command
         $content = str_replace('{{class}}', $camel.'Controller', $content);
         $content = str_replace('{{model}}', $MainModel, $content);
         $content = str_replace('{{view}}', $camel, $content);
+        $content = str_replace('{{table}}', $this->argument('name'), $content);
         $content = str_replace('{{collection}}', $this->argument('name'), $content);
 
         File::put("app/Http/Controllers/DogAdmin/".$camel.'Controller.php', $content);

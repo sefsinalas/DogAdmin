@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "63fa6e7981db1c91e4741797550a70b5",
-    "content-hash": "eeb5143ddbc3eb2cb2ad5f1b4a8878b9",
+    "hash": "7707076222c6ec097153a2bc80b4e9fc",
+    "content-hash": "612aae7db9e411f8f15d28515072cd5c",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -475,6 +475,60 @@
                 "laravel"
             ],
             "time": "2016-08-26 11:44:52"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "3a312d39ffe37da0f57b602618b61fd07c1fcec5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/3a312d39ffe37da0f57b602618b61fd07c1fcec5",
+                "reference": "3a312d39ffe37da0f57b602618b61fd07c1fcec5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.2.*",
+                "illuminate/routing": "5.2.*",
+                "illuminate/session": "5.2.*",
+                "illuminate/support": "5.2.*",
+                "illuminate/view": "5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/database": "5.2.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-01-27 22:29:54"
         },
         {
             "name": "league/flysystem",
@@ -2475,61 +2529,6 @@
             "time": "2015-05-11 14:41:42"
         },
         {
-            "name": "mayconbordin/laragen",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mayconbordin/laragen.git",
-                "reference": "96fdf04f2813c9adcb4a527c0a214af205895e6e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mayconbordin/laragen/zipball/96fdf04f2813c9adcb4a527c0a214af205895e6e",
-                "reference": "96fdf04f2813c9adcb4a527c0a214af205895e6e",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "~2.5",
-                "illuminate/config": "~5.0|~5.1",
-                "illuminate/console": "~5.0|~5.1",
-                "illuminate/database": "~5.0|~5.1",
-                "illuminate/filesystem": "~5.0|~5.1",
-                "illuminate/http": "~5.0|~5.1",
-                "illuminate/pagination": "~5.0|~5.1",
-                "illuminate/support": "~5.0|~5.1",
-                "illuminate/validation": "~5.0|~5.1",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9.4",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Mayconbordin\\Laragen\\": "src/Mayconbordin/Laragen/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maycon Bordin",
-                    "email": "mayconbordin@gmail.com"
-                }
-            ],
-            "description": "Laravel 5 Generators / Scaffolding from Database.",
-            "keywords": [
-                "crud",
-                "generators",
-                "laravel",
-                "scaffolding"
-            ],
-            "time": "2015-12-10 17:42:46"
-        },
-        {
             "name": "mockery/mockery",
             "version": "0.9.5",
             "source": {
@@ -3546,6 +3545,74 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "sefsinalas/laragen",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sefsinalas/laragen.git",
+                "reference": "8d3098b460007280f0b686dd492d8a83ca1109f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sefsinalas/laragen/zipball/8d3098b460007280f0b686dd492d8a83ca1109f3",
+                "reference": "8d3098b460007280f0b686dd492d8a83ca1109f3",
+                "shasum": ""
+            },
+            "archive": {
+                "exclude": [
+                    "/tests",
+                    "/artwork"
+                ]
+            },
+            "require": {
+                "doctrine/dbal": "~2.5",
+                "illuminate/config": "~5.0|~5.1",
+                "illuminate/console": "~5.0|~5.1",
+                "illuminate/database": "~5.0|~5.1",
+                "illuminate/filesystem": "~5.0|~5.1",
+                "illuminate/http": "~5.0|~5.1",
+                "illuminate/pagination": "~5.0|~5.1",
+                "illuminate/support": "~5.0|~5.1",
+                "illuminate/validation": "~5.0|~5.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mayconbordin\\Laragen\\": "src/Mayconbordin/Laragen/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Mayconbordin\\Laragen\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maycon Bordin",
+                    "email": "mayconbordin@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Generators / Scaffolding from Database.",
+            "keywords": [
+                "crud",
+                "generators",
+                "laravel",
+                "scaffolding"
+            ],
+            "support": {
+                "source": "https://github.com/sefsinalas/laragen/tree/master"
+            },
+            "time": "2016-08-30 13:38:30"
+        },
+        {
             "name": "symfony/css-selector",
             "version": "v3.0.9",
             "source": {
@@ -3757,7 +3824,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mayconbordin/laragen": 20
+        "sefsinalas/laragen": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

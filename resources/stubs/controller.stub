@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\DogAdmin;
 
 {{models}}
 use Illuminate\Http\Requests;
@@ -9,7 +9,7 @@ use Redirect;
 
 use Illuminate\Http\Request;
 
-class {{class}} extends Controller
+class {{class}} extends DogController
 {
 	/**
      * Create a new controller instance.
@@ -22,7 +22,7 @@ class {{class}} extends Controller
     }
 
 	/**
-	 * Display a listing of {{model}}.
+	 * Muestra el listado de {{model}}.
 	 *
 	 * @return Response
 	 */
@@ -32,13 +32,13 @@ class {{class}} extends Controller
 	}
 
 	/**
-	 * Show the form for creating a new {{model}}.
+	 * Muestra el formulario para crear un nuevo {{model}}.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return view('{{view}}.add_edit');
+		return view('DogAdmin.{{view}}.add_edit');
 	}
 
 	/**
@@ -49,62 +49,63 @@ class {{class}} extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, {{model}}::$rules, {{model}}::$messages);
+		$this->validate($request, {{model}}::$rules);
 
-        $this->createEntry({{model}}::class, $request->all());
+        {{model}}::create($request->all());
 
-        return Redirect::route('{{view}}.index');
+        return redirect('{{table}}');
 	}
 
 	/**
 	 * Display the specified {{model}}.
 	 *
-	 * @param {{model}} ${{collection}}
+	 * @param $id integer ID del item
 	 * @return Response
 	 */
-	public function show({{model}} ${{collection}})
+	public function show($id)
 	{
-		return view('{{view}}.show', ['item' => ${{collection}}]);
+		${{table}} = {{model}}::find($id);
+		return view('DogAdmin.{{view}}.show', ['item' => ${{table}}]);
 	}
 
 	/**
 	 * Show the form for editing the specified {{model}}.
 	 *
-	 * @param {{model}} ${{collection}}
+	 * @param $id integer ID de: {{model}}
      * @return Response
      */
-    public function edit({{model}} ${{collection}})
+    public function edit($id)
 	{
-		return view('{{view}}.add_edit', ['item' => ${{collection}}]);
+		$item = {{model}}::find($id);
+		return view('DogAdmin.{{view}}.add_edit', ['item' => $item]);
 	}
 
 	/**
 	 * Update the specified {{model}} in storage.
 	 *
-	 * @param {{model}}  ${{collection}}
+	 * @param $id integer ID de: {{model}}
      * @param Request    $request
      * @return Response
      */
-    public function update({{model}} ${{collection}}, Request $request)
+    public function update($id, Request $request)
 	{
-		$this->validate($request, {{model}}::$rules, {{model}}::$messages);
+		$this->validate($request, {{model}}::$rules);
 
-        $this->updateEntry(${{collection}}, $request->all());
+        {{model}}::find($id)->update($request->all());
 
-        return Redirect::route('{{view}}.index');
+        return redirect('{{table}}');
 	}
 
 	/**
 	 * Remove the specified {{model}} from storage.
 	 *
-	 * @param {{model}}  ${{collection}}
-     * @param Request    $request
-	 * @return Response
+	 * @param $id integer ID de: {{model}}
+	 * @return Redirect
 	 */
-	public function destroy({{model}} ${{collection}}, Request $request)
+	public function destroy($id)
 	{
-		$this->deleteEntry(${{collection}}, $request);
+		{{model}}::find($id)->delete();
 
-        return Redirect::route('{{view}}.index');
+        return redirect('{{table}}');
 	}
 }

@@ -10,21 +10,21 @@ use App\Models\DogAdmin\Config;
 
 use App\User;
 
-class CreateIndexViewDogAdmin extends Command
+class CreateShowViewDogAdmin extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'dogadmin:create_index_view {name}';
+    protected $signature = 'dogadmin:create_show_view {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Crea una vista de index';
+    protected $description = 'Crea una vista para mostrar un registro';
 
     /**
      * Execute the console command.
@@ -33,9 +33,9 @@ class CreateIndexViewDogAdmin extends Command
      */
     public function handle()
     {
-        $content = File::get("resources/stubs/view.index.stub");
+        $content = File::get("resources/stubs/view.show.stub");
 
-        $config =  new Config;
+        $config = new Config;
         $data = $config->getData();
 
         /*==============================================================
@@ -55,38 +55,18 @@ class CreateIndexViewDogAdmin extends Command
         /*=====  End of COMMON  ======*/
 
 
-        /*====================================
-        =            COLUMN TITLES            =
-        ====================================*/
-        $columnTitles = '<th>ID</th>'	.PHP_EOL;
+        /*==============================
+        =            FIELDS            =
+        ===============================*/
+    	$fields = '';
 
-        foreach ($module->fields as $f)
-        {
-        	$columnTitles .= Fields::tableTitle($f, $data);
-        }
+    	foreach ($module->fields as $f)
+    	{
+    		$fields .= Fields::show($f, $data);
+    	}
 
-        $content = str_replace('{{column-titles}}', $columnTitles, $content);
-        /*=====  End of COLUMN TITLES  ======*/
-
-
-        /*======================================
-        =            COLUMN CONTENT            =
-        ======================================*/
-        $columns = '<tr>'.PHP_EOL.'<td>{{ $item->id }}</td>'.PHP_EOL;
-
-        foreach ($module->fields as $f)
-        {
-        	$columns .= Fields::tableContent($f, $data);
-        }
-
-        $columns .= '<td>';
-        $columns .= '<a href="home/{{ $item->id }}"><i class="fa fa-fw fa-eye fa-lg text-primary"></i></a>';
-        $columns .= '<a href="home/edit/{{ $item->id }}"><i class="fa fa-fw fa-edit fa-lg text-success"></i></a>';
-       	$columns .= '<a href="home/destroy/{{ $item->id }}"><i class="fa fa-fw fa-trash fa-lg text-danger" onclick="return confirm("Estas seguro?")"></i></a>';
-       	$columns .= '</td>'.PHP_EOL.'</tr>'.PHP_EOL;
-
-        $content = str_replace('{{columns}}', $columns, $content);
-        /*=====  End of COLUMN CONTENT  ======*/
+    	$html = str_replace('{{fields}}', $fields, $content);
+        /*=====  End of FIELDS  ======*/
 
 
         /*=============================================
@@ -102,10 +82,8 @@ class CreateIndexViewDogAdmin extends Command
 		  	mkdir("resources/views/DogAdmin/".$moduleCamel);
 		}
 
-        File::put("resources/views/DogAdmin/".$moduleCamel.'/index.blade.php', $content);
+        File::put("resources/views/DogAdmin/".$moduleCamel.'/show.blade.php', $html);
         /*=====  End of DIRECTORIO Y ARCHIVOS  ======*/
-
-
 
     }
 }

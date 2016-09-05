@@ -13,11 +13,21 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+    	// DogAdmin: principal
         Commands\InstallDogAdmin::class,
         Commands\ResetDogAdmin::class,
+        // DogAdmin: controllers
         Commands\CreateControllerDogAdmin::class,
+        // DogAdmin: views
         Commands\CreateIndexViewDogAdmin::class,
+        Commands\CreateAddEditViewDogAdmin::class,
+        Commands\CreateShowViewDogAdmin::class,
+        // DogAdmin: template
+        Commands\CreateSidebarMenuDogAdmin::class,
+        // Dogadmin: routes
+        Commands\CreateRoutesDogAdmin::class,
+        // DogAdmin: seeders
+        Commands\CreateSeedersDogAdmin::class,
     ];
 
     /**

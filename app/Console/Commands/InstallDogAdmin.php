@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use File;
 use App\Models\DogAdmin\Utils;
+use App\Models\DogAdmin\Config;
 
 use App\User;
 
@@ -31,8 +32,8 @@ class InstallDogAdmin extends Command
      */
     public function handle()
     {
-        $json = File::get("config/config.json");
-        $data = json_decode($json);
+    	$config = new Config();
+        $data = $config->getData();
 
  		/*================================
  		=            SETEO BD            =
@@ -76,6 +77,11 @@ class InstallDogAdmin extends Command
  		Utils::changeEnv('TITLE', '"'.$data->general->title.'"');
 		$mini_title = (!isset($data->general->mini_title)) ? substr($data->general->title, 0, 3) : $data->general->mini_title;
 		Utils::changeEnv('MINI_TITLE', '"'.$mini_title.'"');
+		Utils::changeEnv('ALLOW_REGISTER', $data->general->allow_register);
+		Utils::changeEnv('MAIN_COLOR', $data->general->main_color);
+		Utils::changeEnv('LAYOUT', $data->general->layout);
+		Utils::changeEnv('FOOTER_LINK', $data->general->footer_link);
+		Utils::changeEnv('FOOTER_TITLE', '"'.$data->general->footer_title.'"');
  		/*=====  End of OPCIONES GENERALES  ======*/
 
 
@@ -119,7 +125,15 @@ class InstallDogAdmin extends Command
 
  			// crea las vistas
  			\Artisan::call('dogadmin:create_index_view', ['name' => $m->general->table]);
+ 			\Artisan::call('dogadmin:create_add_edit_view', ['name' => $m->general->table]);
+ 			\Artisan::call('dogadmin:create_show_view', ['name' => $m->general->table]);
+
+ 			// creo las rutas
+ 			\Artisan::call('dogadmin:create_route', ['name' => $m->general->table]);
  		}
+
+ 		// crea el menu
+ 		\Artisan::call('dogadmin:create_sidebar_menu');
 
  		\Artisan::call('migrate');
 

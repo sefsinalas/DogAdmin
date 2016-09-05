@@ -1,8 +1,3 @@
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <a href="https://github.com/syahzul/admin-theme">
-            Laravel Admin Theme
-        </a>
-    </div>
-    <strong>&copy; {{ date('Y') }} <a href="http://www.syahzul.com">syahzul</a>.</strong>
+    <strong>Desarrollado por <a href="{{ env('FOOTER_LINK') }}" target="_blank">{{ env('FOOTER_TITLE') }}</a></strong>
 </footer>

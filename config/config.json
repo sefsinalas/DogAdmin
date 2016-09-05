@@ -9,7 +9,12 @@
 		"redirect_on_login": "/demo",
 		"redirect_after_logout": "/login",
 		"title": "BM Estudio",
-		"mini_title": "BME"
+		"mini_title": "BME",
+		"allow_register": false,
+		"main_color": "red",
+		"layout": "sidebar_mini",
+		"footer_link": "http://bmestudio.com.ar",
+		"footer_title": "BM Estudio"
 	},
 	"modules":[
 		{
@@ -21,15 +26,18 @@
 				{
 					"title": "Titulo 1",
 					"type": "string",
-					"name": "titulo_principal"
+					"name": "titulo_principal",
+					"fake": "word"
 				},
 				{
 					"title": "Titulo 2",
-					"type": "string"
+					"type": "string",
+					"fake": "sentence(2)"
 				},
 				{
 					"title": "Texto",
-					"type": "text"
+					"type": "text",
+					"fake": "text"
 				}
 			]
 		},
@@ -45,7 +53,8 @@
 				},
 				{
 					"title": "Titulo",
-					"type": "string"
+					"type": "string",
+					"fake": "sentence(3)"
 				}
 			]
 		},
@@ -57,7 +66,8 @@
 			"fields":[
 				{
 					"title": "Titulo corto",
-					"type": "string"
+					"type": "string",
+					"fake": "word"
 				},
 				{
 					"title": "Imagen portada",
@@ -65,11 +75,13 @@
 				},
 				{
 					"title": "Titulo completo",
-					"type": "string"
+					"type": "string",
+					"fake": "sentence"
 				},
 				{
 					"title": "Texto",
-					"type": "text"
+					"type": "text",
+					"fake": "sentence"
 				},
 				{
 					"title": "Galeria",
@@ -85,35 +97,73 @@
 			"fields":[
 				{
 					"title": "Email",
-					"type": "string"
+					"type": "string",
+					"fake": "email"
 				},
 				{
 					"title": "Dirección",
-					"type": "string"
+					"type": "string",
+					"fake": "address"
 				},
 				{
 					"title": "Localidad",
-					"type": "string"
+					"type": "string",
+					"fake": "city"
 				},
 				{
 					"title": "URL Facebook",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL Behance",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL Vimeo",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL Pinterest",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
 				},
 				{
 					"title": "URL LinkedIn",
-					"type": "string"
+					"type": "string",
+					"fake": "domainName"
+				}
+			]
+		}
+	],
+	"menus":[
+		{
+			"title": "Inicio",
+			"module": "home",
+			"icon_class": "fa fa-home",
+			"count_color": "red"
+		},
+		{
+			"title": "Servicios",
+			"module": "servicios",
+			"icon_class": "fa fa-building"
+		},
+		{
+			"title": "Todos",
+			"icon_class": "fa fa-list",
+			"submenus": [
+				{
+					"title": "Portfolio",
+					"module": "portfolio",
+					"icon_class": "fa fa-briefcase",
+					"count_color": "green"
+				},
+				{
+					"title": "Contacto",
+					"module": "contacto",
+					"icon_class": "fa fa-envelope"
 				}
 			]
 		}

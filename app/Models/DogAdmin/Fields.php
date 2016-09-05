@@ -106,15 +106,28 @@ class Fields{
 	 */
 	public static function show($field, $config)
 	{
-		/*==============================
-		=            STRING            =
-		==============================*/
-		if ($field->type == 'string')
-    	{
-    		$name = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-    		return '<td><strong><small>'.$field->title.'</small></strong><br>{{ $item->'.$name.' }}</td>'.PHP_EOL;
-    	}
+		$content = Stubs::get("fields/$field->type/show.stub");
 
+		if (empty($content))
+		{
+			return '';
+		}
+
+		$properties = get_object_vars($field);
+
+		switch ($field->type)
+		{
+			case 'string':
+			case 'text':
+				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
+				break;
+
+			default:
+				# code...
+				break;
+		}
+
+    	return Stubs::replace($content, $properties);
 	}
 
 	/**

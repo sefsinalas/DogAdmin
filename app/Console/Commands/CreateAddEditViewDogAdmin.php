@@ -35,7 +35,7 @@ class CreateAddEditViewDogAdmin extends Command
     {
         $content = File::get("resources/stubs/view.add_edit.stub");
 
-        $config =  new Config;
+        $config = new Config;
         $data = $config->getData();
 
         /*==============================================================

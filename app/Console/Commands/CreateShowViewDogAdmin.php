@@ -38,28 +38,36 @@ class CreateShowViewDogAdmin extends Command
         $config = new Config;
         $data = $config->getData();
 
+        /*==============================================================
+        =            BUSCO EL MODULO PARA OBTENER SUS DATOS            =
+        ==============================================================*/
         $module = $config->getModuleData($this->argument('name'));
 
+        $moduleCamel = Utils::camelize($module->general->table);
+        /*=====  End of BUSCO EL MODULO PARA OBTENER SUS DATOS  ======*/
+
+
         /*==============================
-        =            TITTLE            =
+        =            COMMON            =
         ==============================*/
         $content = str_replace('{{title}}', $module->general->name, $content);
         $content = str_replace('{{table}}', $module->general->table, $content);
-        /*=====  End of TITTLE  ======*/
+        /*=====  End of COMMON  ======*/
+
 
         /*==============================
         =            FIELDS            =
         ===============================*/
-
-    	$camel = Utils::camelize($module->general->table);
     	$fields = '';
 
     	foreach ($module->fields as $f)
     	{
-    		$fields .= '<tr>'.PHP_EOL.Fields::show($f, $data).'</tr>'.PHP_EOL;
+    		$fields .= Fields::show($f, $data);
     	}
 
     	$html = str_replace('{{fields}}', $fields, $content);
+        /*=====  End of FIELDS  ======*/
+
 
         /*=============================================
         =            DIRECTORIO Y ARCHIVOS            =
@@ -69,16 +77,13 @@ class CreateShowViewDogAdmin extends Command
 		  	mkdir("resources/views/DogAdmin");
 		}
 
-		if (!is_dir("resources/views/DogAdmin/".$camel))
+		if (!is_dir("resources/views/DogAdmin/".$moduleCamel))
         {
-		  	mkdir("resources/views/DogAdmin/".$camel);
+		  	mkdir("resources/views/DogAdmin/".$moduleCamel);
 		}
 
-        File::put("resources/views/DogAdmin/".$camel.'/show.blade.php', $html);
+        File::put("resources/views/DogAdmin/".$moduleCamel.'/show.blade.php', $html);
         /*=====  End of DIRECTORIO Y ARCHIVOS  ======*/
-
-
-        /*=====  End of FIELDS  ======*/
 
     }
 }

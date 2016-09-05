@@ -9,7 +9,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-        	<li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>{{ Auth::user()->name }}</span></a></li>
+        	<li><a href="{{ url('/profile') }}"><i class="fa fa-circle-o text-green"></i> <span>{{ Auth::user()->name }}</span></a></li>
             <li class="header">MENU</li>
             @include('partials.sidebar_menu')
             <li class="header">ADMINISTRACIÓN</li>

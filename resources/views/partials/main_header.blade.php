@@ -19,7 +19,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="tasks-menu">
-                    <a href="#" title="Cerrar sesión de {{ Auth::user()->name }}">
+                    <a href="{{ url('/logout') }}" title="Cerrar sesión de {{ Auth::user()->name }}">
                         <i class="fa fa-sign-out"></i>
                     </a>
                 </li>

@@ -77,6 +77,11 @@ class InstallDogAdmin extends Command
  		Utils::changeEnv('TITLE', '"'.$data->general->title.'"');
 		$mini_title = (!isset($data->general->mini_title)) ? substr($data->general->title, 0, 3) : $data->general->mini_title;
 		Utils::changeEnv('MINI_TITLE', '"'.$mini_title.'"');
+		Utils::changeEnv('ALLOW_REGISTER', $data->general->allow_register);
+		Utils::changeEnv('MAIN_COLOR', $data->general->main_color);
+		Utils::changeEnv('LAYOUT', $data->general->layout);
+		Utils::changeEnv('FOOTER_LINK', $data->general->footer_link);
+		Utils::changeEnv('FOOTER_TITLE', '"'.$data->general->footer_title.'"');
  		/*=====  End of OPCIONES GENERALES  ======*/
 
 

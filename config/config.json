@@ -9,7 +9,12 @@
 		"redirect_on_login": "/demo",
 		"redirect_after_logout": "/login",
 		"title": "BM Estudio",
-		"mini_title": "BME"
+		"mini_title": "BME",
+		"allow_register": false,
+		"main_color": "red",
+		"layout": "sidebar_mini",
+		"footer_link": "http://bmestudio.com.ar",
+		"footer_title": "BM Estudio"
 	},
 	"modules":[
 		{

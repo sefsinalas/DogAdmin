@@ -135,6 +135,9 @@ class InstallDogAdmin extends Command
  		// crea el menu
  		\Artisan::call('dogadmin:create_sidebar_menu');
 
+ 		// crea los seeders
+ 		\Artisan::call('dogadmin:create_seeders');
+
  		\Artisan::call('migrate');
 
  		/*=====  End of MODULES  ======*/

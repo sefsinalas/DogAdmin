@@ -113,6 +113,10 @@ class InstallDogAdmin extends Command
  				{
  					$fieldsForMigration[] = $name.':tinyInteger';
  				}
+ 				elseif($f->type == 'date')
+ 				{
+ 					$fieldsForMigration[] = $name.':date';
+ 				}
 
  				/*=====  End of FIELDS  ======*/
 

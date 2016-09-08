@@ -46,6 +46,11 @@
 					"type": "tinyint",
 					"style": "minimal-red",
 					"fake": "boolean"
+				},
+				{
+					"title": "Fecha",
+					"type": "date",
+					"fake": "date('Y-m-d')"
 				}
 			]
 		},

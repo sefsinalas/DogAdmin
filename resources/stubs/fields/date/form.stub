@@ -1,0 +1,28 @@
+<section class="form-group">
+	<label>{{title}}</label>
+    <div class="input-group date">
+      	<div class="input-group-addon">
+        	<i class="fa fa-calendar"></i>
+      	</div>
+      	<input type="text" class="form-control pull-right datepicker" name={{name}}>
+    </div>
+</section>
+
+@section('vendor_styles')
+	<!-- bootstrap datepicker -->
+  	<link rel="stylesheet" href="../../plugins/datepicker/datepicker3.css">
+@append
+
+@section('vendor_scripts')
+	<!-- bootstrap datepicker -->
+	<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+@append
+
+@section('scripts')
+	<script>
+		//Date picker
+	    $('.datepicker').datepicker({
+	    	autoclose: true
+	    });
+    </script>
+@append

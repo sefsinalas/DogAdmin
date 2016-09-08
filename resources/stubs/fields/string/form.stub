@@ -8,7 +8,7 @@
     	class="form-control"
     	name="{{name}}"
     	placeholder="{{title}}"
-    	value="{{ ($errors && $errors->any() ? old('description') : (isset($item)? $item->description : '')) }}"
+    	value="{{ ($errors && $errors->any() ? old('{{name}}') : (isset($item)? $item->{{name}} : '')) }}"
     	{{disabled}}
     >
 </section>

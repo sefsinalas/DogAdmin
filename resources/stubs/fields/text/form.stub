@@ -6,5 +6,7 @@
     	name="{{name}}"
     	placeholder="{{title}}"
     	{{disabled}}
-    ></textarea>
+    >
+    {{ ($errors && $errors->any() ? old('{{name}}') : (isset($item)? $item->{{name}} : '')) }}
+    </textarea>
 </section>

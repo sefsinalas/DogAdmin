@@ -1,8 +1,29 @@
 <section class="form-group">
 	<div class="checkbox">
+		<!--hack para que siempre se envie un valor para el checkbox-->
+		<input type="hidden" name="{{name}}" value="0">
         <label>
-          	<input type="checkbox" name="{{name}}" {{disabled}} value="1">
+          	<input type="checkbox" name="{{name}}" {{disabled}} class="minimal" value="1">
           	{{title}}
         </label>
     </div>
 </section>
+
+@section('vendor_styles')
+	<!-- iCheck for checkboxes and radio inputs -->
+  	<link rel="stylesheet" href="../../plugins/iCheck/all.css">
+@append
+
+@section('vendor_scripts')
+	<!-- iCheck 1.0.1 -->
+	<script src="../../plugins/iCheck/icheck.min.js"></script>
+@append
+
+@section('scripts')
+	<script>
+		//iCheck for checkbox and radio inputs
+    	$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      		checkboxClass: 'icheckbox_{{style}}'
+    	});
+    </script>
+@append

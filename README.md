@@ -22,7 +22,7 @@ Documentación sobre la configuración del archivo config.json
     - **fields** `requerido`: Array de campos para el modulo
         - **title** `requerido`: Título del campo. Se usara principalmente como label en los formularios y como titulos en las tablas. Ej: "Precio"
         - **type** `requerido`: Tipo del campo. Ver mas abajo para info completa sobre cada tipo de campo. Ej: "string"
-        - **fake** `opcional`: Tipo de dato falso a ingresar en la BD. Puedes ver todas las opciones (aquí)[https://github.com/fzaninotto/Faker#formatters]
+        - **fake** `opcional`: Tipo de dato falso a ingresar en la BD. Puedes ver todas las opciones [aquí](https://github.com/fzaninotto/Faker#formatters)
 
 ## Tipos de campos
 
@@ -65,3 +65,4 @@ Documentación sobre la configuración del archivo config.json
 
 - **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
 - **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false
+- **style** `opcional`: Establece el estilo del checkbox, los estilos y colores se pueden ver [aqui](http://icheck.fronteed.com/). Default: minimal-grey

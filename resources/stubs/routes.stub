@@ -1,6 +1,6 @@
 // start
 // do not remove the previous comment
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middlewareGroups' => ['web']], function() {
 
     Route::get('/{{table}}', 'DogAdmin\{{model}}Controller@index');
     Route::get('/{{table}}/create', 'DogAdmin\{{model}}Controller@create');

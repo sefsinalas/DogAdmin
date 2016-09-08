@@ -1,0 +1,10 @@
+.input-group{
+	margin-bottom: 15px;
+}
+
+.checkbox label{
+	padding-left: 0;
+}
+	.checkbox label div{
+		margin-right: 5px;
+	}

@@ -1,11 +1,12 @@
 <head>
     <meta charset="UTF-8">
-    <title>@yield('page_title', 'Home') - Laravel AdminTheme</title>
+    <title>@yield('page_title', 'Home')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <link href="{{ elixir('css/vendor.css') }}" rel="stylesheet" type="text/css">
     @yield('vendor_styles')
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/DogAdminCustom.css') }}">
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css">
     @yield('styles')
 

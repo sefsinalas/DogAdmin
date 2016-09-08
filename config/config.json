@@ -27,12 +27,14 @@
 					"title": "Titulo 1",
 					"type": "string",
 					"name": "titulo_principal",
-					"fake": "word"
+					"fake": "word",
+					"prefix": "<i class='fa fa-envelope'></i>"
 				},
 				{
 					"title": "Titulo 2",
 					"type": "string",
-					"fake": "sentence(2)"
+					"fake": "sentence(2)",
+					"disabled": false
 				},
 				{
 					"title": "Texto",

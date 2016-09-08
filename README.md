@@ -30,10 +30,38 @@ Documentación sobre la configuración del archivo config.json
 
 **Base de datos**: Crea un campo tipo varchar(255)
 
-**Listados**: Muestra una porcion de maximo 50 caracteres de largo
+**Listados**: Muestra una porción de máximo 50 caracteres de largo
 
 **Formularios**: Es un campo tipo input text
 
 **Opciones adicionales**
 
 - **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+- **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false
+- **prefix** `opcional`: Agrega un prefijo al campo. Opciones: un carácter o código HTML (de un icono por ejemplo)
+
+### text
+
+**Base de datos**: Crea un campo tipo text
+
+**Listados**: Muestra una porción de máximo 50 caracteres de largo
+
+**Formularios**: Es un campo tipo textarea
+
+**Opciones adicionales**
+
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+- **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false
+
+### tinyint
+
+**Base de datos**: Crea un campo tipo tinyint(4)
+
+**Listados**: Muestra un icono representativo del estado
+
+**Formularios**: Es un campo tipo checkbox
+
+**Opciones adicionales**
+
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+- **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false

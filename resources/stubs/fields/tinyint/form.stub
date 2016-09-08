@@ -1,0 +1,8 @@
+<section class="form-group">
+	<div class="checkbox">
+        <label>
+          	<input type="checkbox" name="{{name}}" {{disabled}} value="1">
+          	{{title}}
+        </label>
+    </div>
+</section>

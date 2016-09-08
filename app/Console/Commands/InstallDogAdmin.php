@@ -109,6 +109,10 @@ class InstallDogAdmin extends Command
  				{
  					$fieldsForMigration[] = $name.':text';
  				}
+ 				elseif($f->type == 'tinyint')
+ 				{
+ 					$fieldsForMigration[] = $name.':tinyInteger';
+ 				}
 
  				/*=====  End of FIELDS  ======*/
 

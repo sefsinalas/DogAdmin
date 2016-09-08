@@ -40,6 +40,11 @@
 					"title": "Texto",
 					"type": "text",
 					"fake": "text"
+				},
+				{
+					"title": "Activo",
+					"type": "tinyint",
+					"fake": "boolean"
 				}
 			]
 		},

@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
 'titulo_principal' => $faker->word,
 'titulo_2' => $faker->sentence(2),
 'texto' => $faker->text,
+'activo' => $faker->boolean,
 ]);
 Servicios::insert([
 'titulo' => $faker->sentence(3),

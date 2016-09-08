@@ -22,6 +22,7 @@ Documentación sobre la configuración del archivo config.json
     - **fields** `requerido`: Array de campos para el modulo
         - **title** `requerido`: Título del campo. Se usara principalmente como label en los formularios y como titulos en las tablas. Ej: "Precio"
         - **type** `requerido`: Tipo del campo. Ver mas abajo para info completa sobre cada tipo de campo. Ej: "string"
+        - **fake** `opcional`: Tipo de dato falso a ingresar en la BD. Puedes ver todas las opciones (aquí)[https://github.com/fzaninotto/Faker#formatters]
 
 ## Tipos de campos
 

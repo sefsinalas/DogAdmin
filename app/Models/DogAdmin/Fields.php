@@ -24,17 +24,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		switch ($field->type)
-		{
-			case 'string':
-			case 'text':
-				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-				break;
-
-			default:
-				# code...
-				break;
-		}
+		include(app_path('Includes/'.$field->type.'.php'));
 
 		return Stubs::replace($content, $properties);
 	}
@@ -82,17 +72,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		switch ($field->type)
-		{
-			case 'string':
-			case 'text':
-				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-				break;
-
-			default:
-				# code...
-				break;
-		}
+		include(app_path('Includes/'.$field->type.'.php'));
 
     	return Stubs::replace($content, $properties);
 	}
@@ -115,17 +95,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		switch ($field->type)
-		{
-			case 'string':
-			case 'text':
-				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-				break;
-
-			default:
-				# code...
-				break;
-		}
+		include(app_path('Includes/'.$field->type.'.php'));
 
     	return Stubs::replace($content, $properties);
 	}

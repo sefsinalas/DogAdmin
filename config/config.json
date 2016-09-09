@@ -51,6 +51,11 @@
 					"title": "Fecha",
 					"type": "date",
 					"fake": "date('Y-m-d')"
+				},
+				{
+					"title": "Fondo",
+					"type": "color",
+					"fake": "hexcolor"
 				}
 			]
 		},

@@ -1,0 +1,25 @@
+<div class="form-group">
+	<label>{{title}}</label>
+	<input
+		type="text"
+		class="form-control colorpicker"
+		name="{{name}}"
+		value="{{ ($errors && $errors->any() ? old('{{name}}') : (isset($item) ? $item->{{name}} : '')) }}"
+	>
+</div>
+
+@section('vendor_styles')
+	<!-- Bootstrap Color Picker -->
+  	<link rel="stylesheet" href="../../plugins/colorpicker/bootstrap-colorpicker.min.css">
+@append
+
+@section('vendor_scripts')
+	<!-- bootstrap color picker -->
+	<script src="../../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+@append
+
+@section('scripts')
+	<script>
+		$(".colorpicker").colorpicker();
+    </script>
+@append

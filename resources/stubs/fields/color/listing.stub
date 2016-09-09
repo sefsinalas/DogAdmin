@@ -1,0 +1,1 @@
+<td><div style="width:15px;height:15px;background-color:{{ $item->{{name}} }};display: inline-block;margin-right: 2px;vertical-align: middle;"></div>{{ $item->{{name}} }} </td>

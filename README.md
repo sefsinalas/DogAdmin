@@ -78,3 +78,15 @@ Documentación sobre la configuración del archivo config.json
 **Opciones adicionales**
 
 - **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+
+### color
+
+**Base de datos**: Crea un campo tipo varchar(20)
+
+**Listados**: Muestra el color en formato hex al lado de un pequeño cuadrado de ese color
+
+**Formularios**: Es un campo tipo text con un modal para elegir el color
+
+**Opciones adicionales**
+
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*

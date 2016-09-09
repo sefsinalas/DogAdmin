@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
 'texto' => $faker->text,
 'activo' => $faker->boolean,
 'fecha' => $faker->date('Y-m-d'),
+'fondo' => $faker->hexcolor,
 ]);
 Servicios::insert([
 'titulo' => $faker->sentence(3),

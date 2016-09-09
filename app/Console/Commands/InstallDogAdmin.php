@@ -117,6 +117,10 @@ class InstallDogAdmin extends Command
  				{
  					$fieldsForMigration[] = $name.':date';
  				}
+ 				elseif($f->type == 'color')
+ 				{
+ 					$fieldsForMigration[] = $name.':string(20)';
+ 				}
 
  				/*=====  End of FIELDS  ======*/
 

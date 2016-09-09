@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
 'fecha' => $faker->date('Y-m-d'),
 'fondo' => $faker->hexcolor,
 'hora' => $faker->time,
+'mascara_de_fecha' => $faker->date('Y-m-d'),
+'mascara_de_números_enteros' => $faker->randomDigitNotNull,
+'mascara_de_números_decimales' => $faker->randomFloat,
 ]);
 Servicios::insert([
 'titulo' => $faker->sentence(3),

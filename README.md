@@ -90,3 +90,30 @@ Documentación sobre la configuración del archivo config.json
 **Opciones adicionales**
 
 - **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+
+### time
+
+**Base de datos**: Crea un campo tipo time
+
+**Listados**: Muestra la hora
+
+**Formularios**: Es un campo tipo text con un modal para elegir la hora
+
+**Opciones adicionales**
+
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+
+### mask
+
+**Base de datos**: Crea un campo tipo varchar(255)
+
+**Listados**: Muestra el contenido del campo
+
+**Formularios**: Es un campo tipo input text con una mascara de entrada de datos
+
+**Opciones adicionales**
+
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+- **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false
+- **prefix** `opcional`: Agrega un prefijo al campo. Opciones: un carácter o código HTML (de un icono por ejemplo)
+- **alias** `requerido`: Es el alias de la mascara que se aplicara. Se pueden ver las opciones disponibles (aqui)[http://github.com/RobinHerbots/jquery.inputmask]

@@ -48,7 +48,7 @@ class CreateRoutesDogAdmin extends Command
         $newContent = str_replace('{{table}}', $module->general->table, $newContent);
         /*=====  End of TITTLE  ======*/
 
-        $content .= $newContent;
+        $content = trim($content).PHP_EOL.PHP_EOL.$newContent;
 
         File::put("app/Http/routes.php", $content);
         /*=====  End of DIRECTORIO Y ARCHIVOS  ======*/

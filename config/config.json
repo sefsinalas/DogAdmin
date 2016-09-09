@@ -27,17 +27,62 @@
 					"title": "Titulo 1",
 					"type": "string",
 					"name": "titulo_principal",
-					"fake": "word"
+					"fake": "word",
+					"prefix": "<i class='fa fa-envelope'></i>"
 				},
 				{
 					"title": "Titulo 2",
 					"type": "string",
-					"fake": "sentence(2)"
+					"fake": "sentence(2)",
+					"disabled": false,
+					"nullable": true
 				},
 				{
 					"title": "Texto",
 					"type": "text",
 					"fake": "text"
+				},
+				{
+					"title": "Activo",
+					"type": "tinyint",
+					"style": "minimal-red",
+					"fake": "boolean"
+				},
+				{
+					"title": "Fecha",
+					"type": "date",
+					"fake": "date('Y-m-d')"
+				},
+				{
+					"title": "Fondo",
+					"type": "color",
+					"fake": "hexcolor",
+					"nullable": true
+				},
+				{
+					"title": "Hora",
+					"type": "time",
+					"fake": "time",
+					"nullable": false
+				},
+				{
+					"title": "Mascara de fecha",
+					"type": "mask",
+					"fake": "date('Y-m-d')",
+					"alias": "yyyy-mm-dd"
+				},
+				{
+					"title": "Mascara de números enteros",
+					"type": "mask",
+					"fake": "randomDigitNotNull",
+					"alias": "integer"
+				},
+				{
+					"title": "Mascara de números decimales",
+					"type": "mask",
+					"fake": "randomFloat",
+					"alias": "decimal",
+					"prefix": "<i class='fa fa-usd'></i>"
 				}
 			]
 		},

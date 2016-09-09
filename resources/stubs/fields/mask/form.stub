@@ -1,0 +1,41 @@
+<section class="form-group">
+	<label>
+		{{title}}
+		@if({{isNullable}})
+			<small>(Opcional)</small>
+		@endif
+	</label>
+	@if ( {{hasPrefix}} )
+	<div class="input-group date">
+	    <span class="input-group-addon">{{prefix}}</span>
+		@endif
+	    <input
+	    	type="text"
+	    	class="form-control"
+	    	name="{{name}}"
+	    	data-inputmask="'alias': '{{alias}}'" data-mask
+	    	value="{{ ($errors && $errors->any() ? old('{{name}}') : (isset($item)? $item->{{name}} : '')) }}"
+	    	{{disabled}}
+	    >
+	@if ( {{hasPrefix}} )
+	</div>
+	@endif
+</section>
+
+@section('vendor_styles')
+
+@append
+
+@section('vendor_scripts')
+	<!-- InputMask -->
+	<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+	<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+	<script src="../../plugins/input-mask/jquery.inputmask.numeric.extensions.js"></script>
+	<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+@append
+
+@section('scripts')
+	<script>
+		$("[data-mask]").inputmask();
+    </script>
+@append

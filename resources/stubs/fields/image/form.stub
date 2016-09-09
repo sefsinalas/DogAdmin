@@ -1,17 +1,16 @@
 <section class="form-group">
-    <label>
+	<label>
 		{{title}}
 		@if({{isNullable}})
 			<small>(Opcional)</small>
 		@endif
 	</label>
-    <textarea
+
+    <input
+    	type="file"
     	class="form-control"
-    	rows="3"
     	name="{{name}}"
-    	placeholder="{{title}}"
     	{{disabled}}
     >
-    {{ ($errors && $errors->any() ? old('{{name}}') : (isset($item)? $item->{{name}} : '')) }}
-    </textarea>
+
 </section>

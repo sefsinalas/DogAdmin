@@ -1,0 +1,6 @@
+<tr>
+	<td>
+		<strong><small>{{title}}</small></strong><br>
+		{{ $item->{{name}} }}
+	</td>
+</tr>

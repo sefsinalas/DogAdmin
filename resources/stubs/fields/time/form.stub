@@ -1,0 +1,39 @@
+<div class="bootstrap-timepicker">
+	<section class="form-group">
+		<label>
+			{{title}}
+			@if({{isNullable}})
+				<small>(Opcional)</small>
+			@endif
+		</label>
+	    <div class="input-group">
+	        <input type="text" class="form-control timepicker" name="{{name}}">
+
+	        <div class="input-group-addon">
+	          	<i class="fa fa-clock-o"></i>
+	        </div>
+	    </div>
+	</section>
+</div>
+
+@section('vendor_styles')
+	<!-- Bootstrap time Picker -->
+  	<link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
+@append
+
+@section('vendor_scripts')
+	<!-- bootstrap time picker -->
+	<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+@append
+
+@section('scripts')
+	<script>
+		// timepicker
+		$(".timepicker").timepicker({
+	    	minuteStep: 15,
+            showMeridian: false,
+            showInputs: false,
+            explicitMode: true
+	    });
+    </script>
+@append

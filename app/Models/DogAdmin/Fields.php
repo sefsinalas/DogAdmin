@@ -24,17 +24,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		switch ($field->type)
-		{
-			case 'string':
-			case 'text':
-				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-				break;
-
-			default:
-				# code...
-				break;
-		}
+		include(app_path('Includes/'.$field->type.'/properties.php'));
 
 		return Stubs::replace($content, $properties);
 	}
@@ -47,21 +37,18 @@ class Fields{
 	 */
 	public static function tableTitle($field, $config)
 	{
-		/*==============================
-		=            STRING            =
-		==============================*/
-		if ($field->type == 'string')
+		switch ($field->type)
 		{
-			return '<th>'.$field->title.'</th>'.PHP_EOL;
+			// agregar aqui cabeceras de tablas para campos especiales
+			// code
+
+			// y para todo el resto
+			default:
+				$content = '<th>'.$field->title.'</th>'.PHP_EOL;
+				break;
 		}
 
-		/*============================
-		=            TEXT            =
-		============================*/
-		if ($field->type == 'text')
-		{
-			return '<th>'.$field->title.'</th>'.PHP_EOL;
-		}
+		return $content;
 	}
 
 
@@ -82,17 +69,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		switch ($field->type)
-		{
-			case 'string':
-			case 'text':
-				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-				break;
-
-			default:
-				# code...
-				break;
-		}
+		include(app_path('Includes/'.$field->type.'/properties.php'));
 
     	return Stubs::replace($content, $properties);
 	}
@@ -115,17 +92,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		switch ($field->type)
-		{
-			case 'string':
-			case 'text':
-				$properties['name'] = (empty($field->name)) ? Utils::decamelize($field->title) : $field->name;
-				break;
-
-			default:
-				# code...
-				break;
-		}
+		include(app_path('Includes/'.$field->type.'/properties.php'));
 
     	return Stubs::replace($content, $properties);
 	}

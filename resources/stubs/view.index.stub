@@ -26,7 +26,7 @@
 		<div class="box-footer">
 			<div class="row">
 				<div class="col-md-2">
-					<a href="{{table}}/create" type="button" class="btn btn-block btn-primary">Agregar nuevo</a>
+					<a href="{{table}}/create" type="button" class="btn btn-block btn-default">Agregar nuevo</a>
 				</div>
 			</div>
 		</div>

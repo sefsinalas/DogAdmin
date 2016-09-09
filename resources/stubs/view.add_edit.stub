@@ -15,13 +15,23 @@
 
                 <div class="box-body">
 
-                    {!! Form::open(['method' => isset($item)? 'put':'post', 'url' => '{{table}}' . (isset($item) ? '/'.$item->id : '')]) !!}
+                	@if (count($errors) > 0)
+                	    <div class="alert alert-danger">
+                	        <ul>
+                	            @foreach ($errors->all() as $error)
+                	                <li>{{ $error }}</li>
+                	            @endforeach
+                	        </ul>
+                	    </div>
+                	@endif
+
+                    {!! Form::open(['method' => isset($item)? 'put':'post', 'url' => '{{table}}' . (isset($item) ? '/'.$item->id : ''), 'files' => true]) !!}
 
                     {{fields}}
 
                     <div class="input-group">
 				            <span class="input-group-btn">
-				                <button type="submit" name="search" class="btn btn-primary">Enviar</button>
+				                <button type="submit" name="search" class="btn btn-default">Enviar</button>
 				            </span>
 				        </div>
 
@@ -34,12 +44,12 @@
 
 @section('vendor_styles')
 
-@endsection
+@append
 
 @section('vendor_scripts')
 
-@endsection
+@append
 
 @section('scripts')
 
-@endsection
+@append

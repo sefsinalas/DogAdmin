@@ -1,0 +1,10 @@
+<tr>
+	<td>
+		<strong><small>{{title}}</small></strong><br>
+		@if($item->{{name}} == '1')
+		<i class="fa fa-check-circle text-success fa-2x"></i>
+		@else
+		<i class="fa fa-ban text-danger fa-2x"></i>
+		@endif
+	</td>
+</tr>

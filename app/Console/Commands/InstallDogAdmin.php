@@ -92,33 +92,22 @@ class InstallDogAdmin extends Command
  		foreach ($data->modules as $m)
  		{
  			$fieldsForMigration = [];
+ 			$fieldsForValidation = [];
 
- 			foreach ($m->fields as $f)
+ 			foreach ($m->fields as $field)
  			{
- 				$name = (empty($f->name)) ? Utils::decamelize($f->title) : $f->name;
+ 				$properties = get_object_vars($field);
 
- 				/*==============================
- 				=            FIELDS            =
- 				==============================*/
+				include(app_path('Includes/'.$field->type.'/properties.php'));
 
- 				if ($f->type == 'string')
- 				{
- 					$fieldsForMigration[] = $name.':string(255)';
- 				}
- 				elseif($f->type == 'text')
- 				{
- 					$fieldsForMigration[] = $name.':text';
- 				}
-
- 				/*=====  End of FIELDS  ======*/
-
+				include(app_path('Includes/'.$field->type.'/data.php'));
  			}
 
  			// crea la tabla con sus respectivos campos
  			\Artisan::call('generate:migration', ['name' => 'create_'.$m->general->table.'_table', '--fields' => implode(',', $fieldsForMigration)]);
 
  			// crea los modelos con table, fillable y rules
- 			\Artisan::call('generate:model', ['name' => $m->general->table, '--fields' => implode(',', $fieldsForMigration), '--fillable' => implode(',', $fieldsForMigration), '--table-name' => $m->general->table]);
+ 			\Artisan::call('generate:model', ['name' => $m->general->table, '--fields' => implode(',', $fieldsForValidation), '--fillable' => implode(',', $fieldsForMigration), '--table-name' => $m->general->table]);
 
  			// crea los controladores
  			\Artisan::call('dogadmin:create_controller', ['name' => $m->general->table]);
@@ -134,6 +123,9 @@ class InstallDogAdmin extends Command
 
  		// crea el menu
  		\Artisan::call('dogadmin:create_sidebar_menu');
+
+ 		// crea los seeders
+ 		\Artisan::call('dogadmin:create_seeders');
 
  		\Artisan::call('migrate');
 

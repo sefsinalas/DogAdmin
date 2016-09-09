@@ -24,7 +24,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		include(app_path('Includes/'.$field->type.'.php'));
+		include(app_path('Includes/'.$field->type.'/properties.php'));
 
 		return Stubs::replace($content, $properties);
 	}
@@ -69,7 +69,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		include(app_path('Includes/'.$field->type.'.php'));
+		include(app_path('Includes/'.$field->type.'/properties.php'));
 
     	return Stubs::replace($content, $properties);
 	}
@@ -92,7 +92,7 @@ class Fields{
 
 		$properties = get_object_vars($field);
 
-		include(app_path('Includes/'.$field->type.'.php'));
+		include(app_path('Includes/'.$field->type.'/properties.php'));
 
     	return Stubs::replace($content, $properties);
 	}

@@ -56,6 +56,11 @@
 					"title": "Fondo",
 					"type": "color",
 					"fake": "hexcolor"
+				},
+				{
+					"title": "Hora",
+					"type": "time",
+					"fake": "time"
 				}
 			]
 		},

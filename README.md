@@ -23,6 +23,7 @@ Documentación sobre la configuración del archivo config.json
         - **title** `requerido`: Título del campo. Se usara principalmente como label en los formularios y como titulos en las tablas. Ej: "Precio"
         - **type** `requerido`: Tipo del campo. Ver mas abajo para info completa sobre cada tipo de campo. Ej: "string"
         - **fake** `opcional`: Tipo de dato falso a ingresar en la BD. Puedes ver todas las opciones (aquí)[https://github.com/fzaninotto/Faker#formatters]
+        - **nullable** `opcional`: Establece si el campo puede estar vacio o si es un campo requerido.
 
 ## Tipos de campos
 
@@ -117,3 +118,16 @@ Documentación sobre la configuración del archivo config.json
 - **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false
 - **prefix** `opcional`: Agrega un prefijo al campo. Opciones: un carácter o código HTML (de un icono por ejemplo)
 - **alias** `requerido`: Es el alias de la mascara que se aplicara. Se pueden ver las opciones disponibles (aqui)[http://github.com/RobinHerbots/jquery.inputmask]
+
+### image
+
+**Base de datos**: Crea un campo tipo varchar(255)
+
+**Listados**: Muestra la imagen en miniatura
+
+**Formularios**: Es un campo tipo input file
+
+**Opciones adicionales**
+
+- **name** `opcional`: Nombre del campo en la base de datos. Ej: "precio". Default: Se intuye desde *title*
+- **disabled** `opcional`: Establece si el campo aparece habilitado o no. Opciones: true | false

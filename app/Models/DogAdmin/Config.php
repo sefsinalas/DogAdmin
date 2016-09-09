@@ -16,7 +16,7 @@ class Config{
 	 */
 	public function __construct()
 	{
-		$json = File::get("config/config.json");
+		$json = File::get(base_path("config/config.json"));
         $this->data = json_decode($json);
 	}
 

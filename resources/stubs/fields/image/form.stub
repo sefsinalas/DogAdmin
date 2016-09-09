@@ -1,0 +1,16 @@
+<section class="form-group">
+	<label>
+		{{title}}
+		@if({{isNullable}})
+			<small>(Opcional)</small>
+		@endif
+	</label>
+
+    <input
+    	type="file"
+    	class="form-control"
+    	name="{{name}}"
+    	{{disabled}}
+    >
+
+</section>

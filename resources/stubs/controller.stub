@@ -5,7 +5,10 @@ namespace App\Http\Controllers\DogAdmin;
 {{models}}
 use Illuminate\Http\Requests;
 
+use App\Models\DogAdmin\Config;
+
 use Redirect;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -51,7 +54,29 @@ class {{class}} extends DogController
 	{
 		$this->validate($request, {{model}}::$rules);
 
-        {{model}}::create($request->all());
+        $item = {{model}}::create($request->all());
+
+        /*================================================
+        =            ACCIONES DESDE store.php            =
+        ================================================*/
+        $data = [];
+        $config = new Config();
+        $module = $config->getModuleData('{{table}}');
+
+        foreach ($module->fields as $field)
+        {
+        	$file = File::glob(app_path("/Includes/$field->type/store.php"));
+
+			if (!empty($file))
+			{
+				$properties = get_object_vars($field);
+				include(app_path('Includes/'.$field->type.'/properties.php'));
+				include($file[0]);
+			}
+        }
+
+        $item->update($data);
+        /*=====  End of ACCIONES DESDE store.php  ======*/
 
         return redirect('{{table}}');
 	}
@@ -91,7 +116,29 @@ class {{class}} extends DogController
 	{
 		$this->validate($request, {{model}}::$rules);
 
-        {{model}}::find($id)->update($request->all());
+        $item = {{model}}::find($id)->update($request->all());
+
+        /*================================================
+        =            ACCIONES DESDE store.php            =
+        ================================================*/
+        $data = [];
+        $config = new Config();
+        $module = $config->getModuleData('{{table}}');
+
+        foreach ($module->fields as $field)
+        {
+        	$file = File::glob(app_path("/Includes/$field->type/store.php"));
+
+			if (!empty($file))
+			{
+				$properties = get_object_vars($field);
+				include(app_path('Includes/'.$field->type.'/properties.php'));
+				include($file[0]);
+			}
+        }
+
+        $item->update($data);
+        /*=====  End of ACCIONES DESDE store.php  ======*/
 
         return redirect('{{table}}');
 	}

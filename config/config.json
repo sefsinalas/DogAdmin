@@ -34,7 +34,8 @@
 					"title": "Titulo 2",
 					"type": "string",
 					"fake": "sentence(2)",
-					"disabled": false
+					"disabled": false,
+					"nullable": true
 				},
 				{
 					"title": "Texto",
@@ -55,12 +56,14 @@
 				{
 					"title": "Fondo",
 					"type": "color",
-					"fake": "hexcolor"
+					"fake": "hexcolor",
+					"nullable": true
 				},
 				{
 					"title": "Hora",
 					"type": "time",
-					"fake": "time"
+					"fake": "time",
+					"nullable": false
 				}
 			]
 		},

@@ -1,14 +1,23 @@
-<label>{{title}}</label>
-<section class="{{ ({{hasPrefix}}) ? 'input' : 'form' }}-group">
+<section class="form-group">
+	<label>
+		{{title}}
+		@if({{isNullable}})
+			<small>(Opcional)</small>
+		@endif
+	</label>
 	@if ( {{hasPrefix}} )
-    <span class="input-group-addon">{{prefix}}</span>
+	<div class="input-group date">
+	    <span class="input-group-addon">{{prefix}}</span>
+		@endif
+	    <input
+	    	type="text"
+	    	class="form-control"
+	    	name="{{name}}"
+	    	placeholder="{{title}}"
+	    	value="{{ ($errors && $errors->any() ? old('{{name}}') : (isset($item)? $item->{{name}} : '')) }}"
+	    	{{disabled}}
+	    >
+	@if ( {{hasPrefix}} )
+	</div>
 	@endif
-    <input
-    	type="text"
-    	class="form-control"
-    	name="{{name}}"
-    	placeholder="{{title}}"
-    	value="{{ ($errors && $errors->any() ? old('{{name}}') : (isset($item)? $item->{{name}} : '')) }}"
-    	{{disabled}}
-    >
 </section>

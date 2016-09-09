@@ -1,4 +1,4 @@
 <?php
-$fieldsForMigration[] = $properties['name'].':tinyInteger';
-$fieldsForValidation[] = $properties['name'].':tinyInteger';
+$fieldsForMigration[] = $properties['name'].':tinyInteger'.$properties['nullable'];
+$fieldsForValidation[] = $properties['name'].':tinyInteger'.$properties['nullable'];
 ?>

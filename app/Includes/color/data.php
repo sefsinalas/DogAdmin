@@ -1,4 +1,4 @@
 <?php
-$fieldsForMigration[] = $properties['name'].':string(20)';
-$fieldsForValidation[] = $properties['name'].':string(20)';
+$fieldsForMigration[] = $properties['name'].':string(20)'.$properties['nullable'];
+$fieldsForValidation[] = $properties['name'].':string(20)'.$properties['nullable'];
 ?>

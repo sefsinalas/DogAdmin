@@ -1,6 +1,11 @@
 <div class="bootstrap-timepicker">
 	<section class="form-group">
-		<label>{{title}}</label>
+		<label>
+			{{title}}
+			@if({{isNullable}})
+				<small>(Opcional)</small>
+			@endif
+		</label>
 	    <div class="input-group">
 	        <input type="text" class="form-control timepicker" name="{{name}}">
 

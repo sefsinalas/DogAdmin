@@ -4,7 +4,10 @@
 		<input type="hidden" name="{{name}}" value="0">
         <label>
           	<input type="checkbox" name="{{name}}" {{disabled}} class="minimal" value="1">
-          	{{title}}
+      		{{title}}
+      		@if({{isNullable}})
+      			<small>(Opcional)</small>
+      		@endif
         </label>
     </div>
 </section>
